@@ -180,3 +180,12 @@ body{background:radial-gradient(ellipse at 6% 0%,#e6ecff 0,transparent 48%),var(
 .preview-dots span.on{background:var(--accent);transform:scale(1.25)}
 @media(prefers-reduced-motion:reduce){.stop-preview.swap img,.stop-preview.swap .preview-copy{animation:none}.stop-preview img{transition:none}}
 @media(max-width:650px){.route-aside{position:static}.stop-preview,.preview-dots{display:none}}
+
+/* Text me this route */
+.sms-form{margin:14px 0 0;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px;max-width:460px}
+.sms-form label{display:block;font-size:10px;font-weight:650;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.sms-row{display:flex;gap:8px}
+.sms-row input{flex:1;min-width:0;height:46px;border:1px solid var(--line);border-radius:9px;padding:0 13px;background:var(--bg);color:var(--ink);font-size:15px}
+.sms-row input:focus{border-color:var(--accent);outline:none}
+.sms-note{font-size:11px;margin:10px 0 0;line-height:1.5}
+@media(max-width:650px){.sms-form{max-width:none}.sms-row input{font-size:16px}}
