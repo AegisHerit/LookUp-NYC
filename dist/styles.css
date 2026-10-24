@@ -293,3 +293,15 @@ body{overflow-x:clip}
 @media(max-width:650px){.sms-form{max-width:none}.sms-row input{font-size:16px}}
 /* Share and Text me sit side by side on phones */
 @media(max-width:650px){.route-actions [data-share-route],.route-actions [data-sms-toggle]{flex:1 1 calc(50% - 5px);padding-left:8px;padding-right:8px;font-size:12px;gap:6px}}
+/* Phones: keep the hero photo clean and put its caption underneath, where it's easy to read */
+@media(max-width:650px){
+ .hero-image{height:auto;overflow:visible;border-radius:0;box-shadow:none;display:flex;flex-direction:column;gap:12px}
+ .hero-image img{height:230px;border-radius:10px 60px 10px 10px;box-shadow:0 5px 25px #17264d14}
+ .hero-image:hover img{transform:none}
+ .hero-image:after,.hero-stamp{display:none}
+ .hero-caption{position:static;color:var(--ink);align-items:center;padding:0 2px}
+ .hero-caption .eyebrow{color:var(--accent);font-size:9px;margin:0 0 6px}
+ .hero-caption strong{font-size:21px;color:var(--ink)}
+ .hero-caption span.caption-location{color:var(--muted);opacity:1;margin-top:5px}
+ .hero-caption .round-arrow{border-color:var(--line);color:var(--accent);background:var(--paper)}
+}
