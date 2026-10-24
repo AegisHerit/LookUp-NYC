@@ -146,3 +146,20 @@ body{background:radial-gradient(ellipse at 6% 0%,#e6ecff 0,transparent 48%),var(
 .show-more[aria-expanded="true"] .icon{transform:rotate(-90deg)}
 @media(max-width:650px){.places-grid.collapsed .place-card:nth-child(n+5){display:none}}
 @media(min-width:651px){.show-more.only-phone{display:none}}
+/* Route filters: one row on phones, the rest behind "More" */
+.more-filters{display:contents}
+.more-filters-button{display:none}
+@media(max-width:650px){
+ .route-filters{display:grid;grid-template-columns:1fr 1fr auto;gap:9px;align-items:end}
+ .more-filters-button{display:flex;align-items:center;gap:6px;height:44px;padding:0 14px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);font-size:13px;font-weight:550}
+ .more-filters-button .icon{width:17px;height:17px}
+ .route-filters.open .more-filters-button{border-color:var(--accent);color:var(--accent)}
+ .more-count{background:var(--accent);color:#fff;border-radius:999px;font-size:10px;min-width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;padding:0 5px}
+ .more-filters{display:none;grid-column:1/-1;grid-template-columns:1fr 1fr;gap:9px}
+ .route-filters.open .more-filters{display:grid;animation:filters-in .25s ease-out}
+ .more-filters .near-button{grid-column:span 2;justify-content:center}
+ .route-filters>.near-button{grid-column:auto}
+}
+@keyframes filters-in{from{opacity:0;transform:translateY(-6px)}}
+@media(prefers-reduced-motion:reduce){.route-filters.open .more-filters{animation:none}}
+@media(max-width:650px){.route-filters .route-filter select{padding:11px 26px 11px 11px;background-position:right 9px center;font-size:13px}.more-filters-button{padding:0 11px;gap:5px}}
