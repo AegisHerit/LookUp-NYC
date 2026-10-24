@@ -5,7 +5,7 @@
   'use strict';
   function sentences(text){return (String(text).match(/[^.!?]+(?:[.!?]+[”’"']?|$)/g)||[]).map(s=>s.trim()).filter(Boolean)}
   class Narrator {
-    constructor({synth,Utterance,onChange=()=>{},onError=()=>{},setTimer=setTimeout,clearTimer=clearTimeout}){
+    constructor({synth,Utterance,onChange=()=>{},onError=()=>{},setTimer=(fn,ms)=>setTimeout(fn,ms),clearTimer=id=>clearTimeout(id)}){
       Object.assign(this,{synth,Utterance,onChange,onError,setTimer,clearTimer});
       this.guide=null;this.chapter=0;this.sentence=0;this.phase='idle';this.rate=1;this.voiceURI='';this.generation=0;this.timer=null;this.utterance=null;
     }
@@ -64,5 +64,61 @@
     }
     stop(){this.cancel();this.guide=null;this.chapter=0;this.sentence=0;this.phase='idle';this.emit()}
   }
-  return {Narrator,sentences};
+  // Plays a recorded narration file, split into chapters by start time.
+  // Same interface as Narrator so the UI can drive either one.
+  class RecordedPlayer {
+    constructor({createAudio,onChange=()=>{},onError=()=>{}}){
+      Object.assign(this,{createAudio,onChange,onError});
+      this.guide=null;this.chapter=0;this.phase='idle';this.rate=1;this.voiceURI='';this.el=null;
+    }
+    get supported(){return typeof this.createAudio==='function'}
+    get duration(){const d=this.el?.duration;return Number.isFinite(d)&&d>0?d:(this.guide?.duration||0)}
+    chapterAt(t){const cs=this.guide?.chapters||[];let i=0;cs.forEach((c,n)=>{if(t>=c.start)i=n});return i}
+    state(){
+      const total=Math.round(this.duration),t=this.el?this.el.currentTime:0;
+      return {guide:this.guide,chapter:this.chapter,sentence:0,phase:this.phase,rate:this.rate,voiceURI:this.voiceURI,unit:'seconds',total,completed:this.phase==='ended'?total:Math.min(total,Math.round(t)),text:this.guide?.chapters[this.chapter]?.text||''};
+    }
+    emit(){this.onChange(this.state())}
+    detach(){if(!this.el)return;const el=this.el;this.el=null;el.onplaying=el.onwaiting=el.onpause=el.onended=el.ontimeupdate=el.onerror=null;el.pause()}
+    fail(message){this.detach();this.phase='error';this.emit();this.onError(message)}
+    load(guide,chapter=0){
+      if(!this.supported){this.onError('Audio playback is unavailable in this browser. You can read every section in the transcript.');return}
+      this.detach();this.guide=guide;
+      const el=this.createAudio(guide.src);this.el=el;el.preload='auto';el.playbackRate=this.rate;
+      el.onplaying=()=>{if(this.el!==el)return;this.phase='playing';this.emit()};
+      el.onwaiting=()=>{if(this.el!==el||this.phase!=='playing')return;this.phase='loading';this.emit()};
+      el.ontimeupdate=()=>{if(this.el!==el||this.seeking)return;const c=this.chapterAt(el.currentTime);if(c!==this.chapter)this.chapter=c;this.emit()};
+      el.onended=()=>{if(this.el!==el)return;this.chapter=this.guide.chapters.length-1;this.phase='ended';this.emit()};
+      el.onerror=()=>{if(this.el!==el)return;this.fail('The recording could not be played. Check your connection, or read the transcript below.')};
+      this.skip(chapter);
+    }
+    play(){
+      if(!this.el)return;this.phase='loading';this.emit();
+      let r;try{r=this.el.play()}catch{r=null}
+      if(r&&typeof r.catch==='function')r.catch(e=>{if(this.phase!=='loading')return;if(e&&e.name==='NotAllowedError'){this.phase='paused';this.emit();this.onError('Tap Play to start the recording.')}else if(e&&e.name!=='AbortError')this.fail('The recording could not be played. Check your connection, or read the transcript below.')});
+    }
+    toggle(){
+      if(!this.guide)return;
+      if(!this.el){this.load(this.guide,this.phase==='ended'?0:this.chapter);return}
+      if(this.phase==='playing'||this.phase==='loading'){this.phase='paused';this.el.pause();this.emit();return}
+      if(this.phase==='ended'){this.chapter=0;this.el.currentTime=0}
+      this.play();
+    }
+    skip(chapter){
+      if(!this.guide)return;
+      if(!this.el){this.load(this.guide,chapter);return}
+      this.chapter=Math.max(0,Math.min(chapter,this.guide.chapters.length-1));
+      const el=this.el,start=this.guide.chapters[this.chapter].start;
+      const seek=()=>{if(this.el!==el)return;this.seeking=false;try{el.currentTime=start}catch{}};
+      if(el.readyState>=1)seek();else{this.seeking=true;el.addEventListener('loadedmetadata',seek,{once:true})}
+      this.play();
+    }
+    restart(){if(this.guide)this.skip(this.chapter)}
+    configure({rate=this.rate,voiceURI=this.voiceURI}={}){
+      const allowed=[.8,1,1.2,1.5];if(!allowed.includes(Number(rate)))return;
+      this.rate=Number(rate);this.voiceURI=voiceURI;if(this.el)this.el.playbackRate=this.rate;this.emit();
+    }
+    stop(){this.detach();this.guide=null;this.chapter=0;this.phase='idle';this.emit()}
+  }
+  return {Narrator,RecordedPlayer,sentences};
 });
