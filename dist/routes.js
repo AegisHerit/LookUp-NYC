@@ -55,5 +55,15 @@
   // Walking directions from a {lat,lng} point to the route's first stop.
   function mapsToStart(route,byId,origin){return dirLink([`${origin.lat},${origin.lng}`,mapsPlace(byId(route.stops[0]))])}
 
-  return {miles,walkMinutes,distanceText,filterRoutes,mapsPlace,mapsLinks,mapsToStart};
+  // Step estimates. An average walking stride is about 2.5 feet, so a mile is about 2,100 steps.
+  // A route's total uses its published distance; each leg gets a share based on how far apart its stops are.
+  const STRIDE_FT=2.5,STEPS_PER_MIN=105;
+  function routeSteps(route,byId){
+    const pts=route.stops.map(byId),straight=pts.map((p,i)=>i?miles(pts[i-1],p):0),sum=straight.reduce((a,b)=>a+b,0)||1;
+    const total=Math.round(Number(route.miles)*5280/STRIDE_FT/50)*50;
+    const legs=straight.map(d=>Math.round(total*d/sum/10)*10);
+    return {total,legs,legMinutes:legs.map(n=>n?Math.max(1,Math.round(n/STEPS_PER_MIN)):0),strideFt:STRIDE_FT};
+  }
+
+  return {miles,walkMinutes,routeSteps,distanceText,filterRoutes,mapsPlace,mapsLinks,mapsToStart};
 });
