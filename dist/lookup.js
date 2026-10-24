@@ -74,7 +74,7 @@ const LookUp=(()=>{
 
   function arrive(p){
     shown.add(p.id);dwell=null;const w=walk();
-    if(w&&!(progress[w.id]||[]).includes(p.id)){progress[w.id]=[...(progress[w.id]||[]),p.id];putStore('lookup-progress',progress);if(location.hash==='#route/'+w.id){const y=scrollY;render();scrollTo(0,y)}}
+    if(w&&!(progress[w.id]||[]).includes(p.id)){progress[w.id]=[...(progress[w.id]||[]),p.id];putStore('lookup-progress',progress);if(location.hash==='#route/'+w.id){const y=scrollY;render();scrollTo(0,y)}if(progress[w.id].length===w.stops.length&&typeof Story!=='undefined')Story.open(w.id)}
     chime();if(navigator.vibrate)navigator.vibrate([90,60,90]);
     document.getElementById('arrival')?.remove();showView(p);bar();speak(p);
   }
