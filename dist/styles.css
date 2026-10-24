@@ -83,3 +83,7 @@ body{background:radial-gradient(ellipse at 6% 0%,#e6ecff 0,transparent 48%),var(
 @media(max-width:650px){.route-actions .button{flex:1 1 100%}}
 [hidden]{display:none!important}
 .button.maps{background:var(--paper);color:var(--accent);border-color:var(--accent)}
+.leaflet-tooltip.stop-label{background:var(--paper);color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:3px 7px;font:600 11px/1.25 'DM Sans',system-ui,sans-serif;box-shadow:0 2px 6px #15244c22;white-space:nowrap}
+.leaflet-tooltip.stop-label:before{display:none}
+.walk-map{height:420px}
+@media(max-width:650px){.walk-map{height:360px}.leaflet-tooltip.stop-label{font-size:10px;padding:2px 6px}}

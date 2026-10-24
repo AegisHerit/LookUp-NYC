@@ -60,20 +60,32 @@ function renderWalk(w){if(!w){renderNotFound();return}document.title=`${w.title}
 function renderSaved(){const places=PLACES.filter(p=>saved.has(p.id));main.innerHTML=`<div class="page-top"><span class="eyebrow">YOUR OWN NEW YORK</span><h1>Keep a little curiosity.</h1><p>Your saved places, ready for the next time you’re out. Saved on this device.</p></div>${places.length?`<div class="places-grid">${places.map(placeCard).join('')}</div>`:`<div class="empty-state">${icon('bookmark')}<h2>A few places worth keeping.</h2><p>Tap the bookmark on any landmark to start your own little collection.</p><a class="button" href="#explore">Find a place ${icon('arrow')}</a></div>`}`}
 function mapList(){const list=[...PLACES];if(locationPoint)list.sort((a,b)=>distance(a)-distance(b));return list.map(p=>`<a class="map-place" href="#place/${p.id}"><img src="assets/${p.id}.webp" alt="" loading="lazy"><span><strong>${PLACES.indexOf(p)+1}. ${p.name}</strong><small>${p.neighborhood} · ${distanceSpan(p)}</small></span></a>`).join('')}
 function renderMap(){main.innerHTML=`<div class="page-top"><span class="eyebrow">FOLLOW YOUR CURIOSITY</span><h1>There’s a story nearby.</h1><p>${PLACES.length} places to start. Tap a pin to meet the building.</p><button class="near-button" data-action="near">${icon('location')}Near me</button></div><div class="map-layout"><div id="places-map" class="map-canvas" aria-label="Interactive map of landmarks"></div><div class="map-list" id="map-list">${mapList()}</div></div><p class="map-note" id="map-status">Simplified location overview, not a street map. Pins show landmark locations. Open a building for street-by-street walking directions.</p>`;initMap('places-map',PLACES,false)}
+function stopLabel(marker,p,side){marker.unbindTooltip().bindTooltip(esc(p.name),{permanent:true,direction:side,offset:[side==='left'?-14:14,0],className:'stop-label',interactive:false,place:p})}
 function initMap(el,places,walk){
  const container=document.getElementById(el);
  if(!window.L){container.innerHTML='<div class="empty-state"><p>The overview could not load. Explore the landmark links and open walking directions.</p></div>';return}
  const map=L.map(el,{scrollWheelZoom:false,zoomControl:true,minZoom:11,maxZoom:17});mapInstance=map;
+ // Set the view first: labels can only be placed once the map knows where it is.
+map.fitBounds(places.map(p=>[p.lat,p.lng]),walk?{paddingTopLeft:[90,40],paddingBottomRight:[90,40],maxZoom:16}:{padding:[42,42],maxZoom:14});
  map.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank" rel="noopener noreferrer">Leaflet</a>');
- map.attributionControl.addAttribution('Cityside · schematic overview');
+ map.attributionControl.addAttribution('LookUp NYC');
  const land=[[40.700,-74.019],[40.713,-74.016],[40.730,-74.012],[40.745,-74.008],[40.759,-74.001],[40.778,-73.988],[40.795,-73.974],[40.812,-73.956],[40.820,-73.933],[40.806,-73.928],[40.789,-73.938],[40.774,-73.943],[40.759,-73.958],[40.747,-73.969],[40.736,-73.973],[40.723,-73.973],[40.712,-73.978],[40.701,-73.997]];
- L.polygon(land,{color:'#a9bddf',weight:1,fillColor:'#eef1ff',fillOpacity:1,interactive:false}).addTo(map);
- L.polygon([[40.768,-73.981],[40.800,-73.958],[40.796,-73.949],[40.764,-73.973]],{color:'#8ad8cc',weight:1,fillColor:'#b0eadc',fillOpacity:1,interactive:false}).addTo(map);
+ // A simple drawn outline of Manhattan, shown until (or unless) the street map loads.
+ const outline=L.layerGroup([L.polygon(land,{color:'#a9bddf',weight:1,fillColor:'#eef1ff',fillOpacity:1,interactive:false}),L.polygon([[40.768,-73.981],[40.800,-73.958],[40.796,-73.949],[40.764,-73.973]],{color:'#8ad8cc',weight:1,fillColor:'#b0eadc',fillOpacity:1,interactive:false})]).addTo(map);
+ // Street map on route pages, so stops sit on real streets. Swaps out the outline once tiles arrive.
+ if(walk){const streets=L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:19,attribution:'© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> · © <a href="https://carto.com/attributions" target="_blank" rel="noopener noreferrer">CARTO</a>'});
+  streets.once('tileload',()=>{if(mapInstance===map){map.removeLayer(outline);areaLabels.forEach(l=>map.removeLayer(l))}});streets.addTo(map)}
  const labels=[['MIDTOWN',40.758,-73.988],['CHELSEA',40.746,-73.999],['GREENWICH VILLAGE',40.732,-74.008],['SOHO',40.724,-74.009],['CENTRAL PARK',40.776,-73.968]];
- labels.forEach(([name,lat,lng])=>L.marker([lat,lng],{interactive:false,keyboard:false,icon:L.divIcon({className:'area-label',html:esc(name),iconSize:[110,20],iconAnchor:[55,10]})}).addTo(map));
+ const areaLabels=labels.map(([name,lat,lng])=>L.marker([lat,lng],{interactive:false,keyboard:false,icon:L.divIcon({className:'area-label',html:esc(name),iconSize:[110,20],iconAnchor:[55,10]})}).addTo(map));
  if(walk)L.polyline(places.map(p=>[p.lat,p.lng]),{color:'#3452ed',weight:2,dashArray:'5 8',opacity:.7,interactive:false}).addTo(map);
- places.forEach((p,i)=>L.marker([p.lat,p.lng],{icon:L.divIcon({className:'map-marker'+(places.length>3?' small':''),html:String(i+1),iconSize:places.length>3?[26,26]:[34,34],iconAnchor:places.length>3?[13,13]:[17,17]}),title:p.name,alt:p.name}).addTo(map).bindPopup(`<strong>${esc(p.name)}</strong><br>${esc(p.neighborhood)}<a href="#place/${p.id}">Explore this place →</a>`));
- map.fitBounds(places.map(p=>[p.lat,p.lng]),{padding:[42,42],maxZoom:14});
+ places.forEach((p,i)=>{const m=L.marker([p.lat,p.lng],{icon:L.divIcon({className:'map-marker'+(places.length>3?' small':''),html:String(i+1),iconSize:places.length>3?[26,26]:[34,34],iconAnchor:places.length>3?[13,13]:[17,17]}),title:p.name,alt:p.name}).addTo(map).bindPopup(`<strong>${esc(p.name)}</strong><br>${esc(p.neighborhood)}<a href="#place/${p.id}">Explore this place →</a>`);
+  // On route maps, name every stop. The label goes on the side away from the closest other stop so neighbors don't overlap.
+  if(walk){const near=places.filter(q=>q!==p).reduce((a,b)=>!a||LookUpRoutes.miles(p,b)<LookUpRoutes.miles(p,a)?b:a,null),side=near&&near.lng>p.lng?'left':'right';
+   stopLabel(m,p,side)}});
+ // Flip any stop label that runs off the edge of the map to the other side of its pin.
+ const fitLabels=()=>{if(mapInstance!==map)return;const box=container.getBoundingClientRect();map.eachLayer(l=>{const t=l.getTooltip&&l.getTooltip();if(!t||!t.getElement())return;const r=t.getElement().getBoundingClientRect(),dir=t.options.direction;
+  if(dir==='left'&&r.left<box.left+4)stopLabel(l,t.options.place,'right');else if(dir==='right'&&r.right>box.right-4)stopLabel(l,t.options.place,'left')})};
+ if(walk){map.on('zoomend moveend',fitLabels);setTimeout(fitLabels,120)}
  userMarker=null;if(locationPoint&&!walk)userMarker=L.circleMarker([locationPoint.lat,locationPoint.lng],{radius:8,color:'#fff',weight:3,fillColor:'#397bbb',fillOpacity:1}).addTo(map).bindPopup('You are here');
  setTimeout(()=>{if(mapInstance===map)map.invalidateSize()},50);
 }
