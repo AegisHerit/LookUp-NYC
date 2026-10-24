@@ -51,6 +51,5 @@
 
   // Route pages are redrawn when a stop is marked visited, so watch for that too.
   new MutationObserver(addControls).observe(main,{childList:true});
-  window.addEventListener('cityside:render',addControls);
   addControls();
 })();

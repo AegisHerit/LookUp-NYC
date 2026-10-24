@@ -8,7 +8,7 @@
 // No npm packages needed: Node 18+ has fetch built in.
 'use strict';
 const http = require('http');
-const { loadData, normalizePhone, routeMessage } = require('./message.js');
+const { loadData, normalizePhone, routeMessage, clientIp, createLimiter } = require('./message.js');
 
 const env = process.env;
 const PORT = Number(env.PORT) || 8787;
@@ -17,6 +17,9 @@ const DRY_RUN = env.DRY_RUN === '1';
 const ALLOWED = (env.ALLOWED_ORIGINS || 'https://aegisherit.github.io')
   .split(',').map(s => s.trim()).filter(Boolean);
 const LOCAL = /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/;
+const ALLOW_INTERNATIONAL = env.ALLOW_INTERNATIONAL === '1';  // US/Canada only unless turned on
+const TRUST_PROXY = env.TRUST_PROXY === '1';                  // set on Render, Railway, Fly, etc.
+const DAILY_LIMIT = Number(env.DAILY_LIMIT) || 100;           // texts per day for the whole server
 
 if (!DRY_RUN && !(env.VONAGE_API_KEY && env.VONAGE_API_SECRET && env.VONAGE_FROM)) {
   console.error('Set VONAGE_API_KEY, VONAGE_API_SECRET and VONAGE_FROM (or DRY_RUN=1 to test without sending).');
@@ -25,15 +28,9 @@ if (!DRY_RUN && !(env.VONAGE_API_KEY && env.VONAGE_API_SECRET && env.VONAGE_FROM
 
 const { places, walks } = loadData();
 
-// Simple in-memory limits so the endpoint can't be used to spam someone.
-const hits = new Map();
-function limited(key, max, windowMs) {
-  const now = Date.now();
-  const list = (hits.get(key) || []).filter(t => now - t < windowMs);
-  if (list.length >= max) { hits.set(key, list); return true; }
-  list.push(now); hits.set(key, list); return false;
-}
-setInterval(() => { const now = Date.now(); for (const [k, v] of hits) if (v.every(t => now - t > 3600e3)) hits.delete(k); }, 600e3).unref();
+// Simple in-memory limits so the endpoint can't be used to spam someone or run up the bill.
+const limited = createLimiter();
+setInterval(() => limited.prune(), 600e3).unref();
 
 async function sendSms(to, text) {
   if (DRY_RUN) { console.log(`[dry run] to ${to}:\n${text}\n`); return { id: 'dry-run' }; }
@@ -82,19 +79,24 @@ const server = http.createServer(async (req, res) => {
   if (url.pathname !== '/api/send-route') return reply(res, 404, { error: 'Not found.' }, origin);
   if (req.method === 'OPTIONS') return reply(res, origin ? 204 : 403, {}, origin);
   if (req.method !== 'POST') return reply(res, 405, { error: 'Use POST.' }, origin);
-  if (reqOrigin && !origin) return reply(res, 403, { error: 'This site is not allowed to send texts.' }, null);
+  // Browsers always send Origin on these requests; scripts that leave it out are turned away.
+  if (!origin) return reply(res, 403, { error: 'This site is not allowed to send texts.' }, null);
 
   let body;
   try { body = await readJson(req); } catch { return reply(res, 400, { error: 'Something went wrong with that request.' }, origin); }
 
   const walk = walks.find(w => w.id === body.routeId);
   if (!walk) return reply(res, 400, { error: 'We couldn’t find that route.' }, origin);
-  const to = normalizePhone(body.phone);
-  if (!to) return reply(res, 400, { error: 'Enter a 10-digit US number, or a number starting with + and a country code.' }, origin);
+  const to = normalizePhone(body.phone, { allowInternational: ALLOW_INTERNATIONAL });
+  if (!to) return reply(res, 400, { error: ALLOW_INTERNATIONAL ? 'Enter a 10-digit US number, or a number starting with + and a country code.' : 'Enter a 10-digit US mobile number.' }, origin);
 
-  const ip = (req.headers['x-forwarded-for'] || req.socket.remoteAddress || '').split(',')[0].trim();
+  const ip = clientIp(req, TRUST_PROXY);
   if (limited('ip:' + ip, 5, 10 * 60e3) || limited('to:' + to, 3, 60 * 60e3))
     return reply(res, 429, { error: 'That’s a lot of texts. Please wait a little and try again.' }, origin);
+  if (limited('all', DAILY_LIMIT, 24 * 3600e3)) {
+    console.error(`Daily limit of ${DAILY_LIMIT} texts reached`);
+    return reply(res, 429, { error: 'Texting is paused for today. Use Share instead, or try again tomorrow.' }, origin);
+  }
 
   try {
     const sent = await sendSms(to, routeMessage(walk, places, SITE_URL));
