@@ -16,7 +16,9 @@ python3 -m http.server 8000 --bind 127.0.0.1 --directory dist
 
 There is no install command, build step, API key, database, or paid service required. Serve `dist` as the web root; asset paths are relative, so the site also works from a subfolder such as GitHub Pages (`https://<user>.github.io/LookUp-NYC/`).
 
+## Deploy
 
+Pushing to `main` or `claude/quirky-darwin-atw6g0` runs `.github/workflows/pages.yml`, which runs the tests and publishes `dist` to GitHub Pages.
 
 ## Files to edit
 
