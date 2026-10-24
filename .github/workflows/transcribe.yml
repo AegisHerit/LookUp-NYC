@@ -21,10 +21,14 @@ jobs:
           AUDIO: ${{ inputs.path }}
         run: |
           python - <<'PY'
-          import os
+          import os, subprocess
+          import numpy as np
           from faster_whisper import WhisperModel
+          raw = subprocess.run(['ffmpeg', '-nostdin', '-i', os.environ['AUDIO'], '-ar', '16000', '-ac', '1', '-f', 's16le', '-'],
+                               capture_output=True, check=True).stdout
+          audio = np.frombuffer(raw, np.int16).astype(np.float32) / 32768
           model = WhisperModel('small.en', device='cpu', compute_type='int8')
-          segments, _ = model.transcribe(os.environ['AUDIO'], beam_size=5)
+          segments, _ = model.transcribe(audio, beam_size=5)
           for s in segments:
               print(f'SEG {s.start:7.2f} {s.end:7.2f} {s.text.strip()}')
           PY
