@@ -63,5 +63,65 @@ const CREDITS = {
     "author": "Ajay Suresh from New York, NY, USA",
     "license": "CC BY 2.0",
     "url": "https://commons.wikimedia.org/wiki/File:The_Public_Theater_(48072652481).jpg"
+  },
+  "historic-puck-1": {
+    "author": "Unknown",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:(King1893NYC)_pg644_PUCK_BUILDING_-_EAST_HOUSTON_AND_MULBERRY_STREETS.jpg"
+  },
+  "historic-puck-2": {
+    "author": "Dalrymple, Louis, 1866-1905, artist",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:PuckMagazine28Aug1893.jpg"
+  },
+  "historic-oldcathedral-1": {
+    "author": "Alexander Jackson Davis, artist\n\nJames Eddy, engraver",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:St._Patrick%27s_(Old)_Cathedral,_Mott_Street,_New_York_City.jpg"
+  },
+  "historic-oldcathedral-2": {
+    "author": "Francis Kearney",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:Old_St._Patrick%27s_Cathedral_on_Mott_Street,_NYC_1831.jpg"
+  },
+  "historic-oldcathedral-3": {
+    "author": "Unknown",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:(King1893NYC)_pg402_ST._PATRICK%27S_CHURCH,_ROMAN_CATHOLIC._MOTT_AND_PRINCE_STREETS.jpg"
+  },
+  "historic-publictheater-1": {
+    "author": "Gleason’s Pictorial Vol. 6 No. 8 (February 25, 1854), Boston:124",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:Astor_Library,_Lafayette_Place,_New_York_City.jpg"
+  },
+  "historic-publictheater-2": {
+    "author": "Miscellaneous Items in High Demand, PPOC, Library of Congress",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:Interior_view_of_the_Astor_Library,_New_York_LCCN2002711812.jpg"
+  },
+  "historic-publictheater-3": {
+    "author": "Unknown photographer",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:Astor_Library_circa_1870.jpg"
+  },
+  "historic-publictheater-4": {
+    "author": "Unknown",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:(King1893NYC)_pg332_ASTOR_LIBRARY,_LAFAYETTE_PLACE.jpg"
+  },
+  "historic-bayard-1": {
+    "author": "Unknown",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:Historic_American_Buildings_Survey,_Cervin_Robinson,_Photographer_May_30,_1970,_TOP_OF_BUILDING_FROM_SOUTH._-_Bayard-Condict_Building,_65-69_Bleecker_Street,_New_York,_New_York_HABS_NY,31-NEYO,82-1.tif"
+  },
+  "historic-bayard-2": {
+    "author": "Unknown",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:Historic_American_Buildings_Survey,_Cervin_Robinson,_Photographer_May_30,_1970,_ENTRANCE._-_Bayard-Condict_Building,_65-69_Bleecker_Street,_New_York,_New_York_County,_NY_HABS_NY,31-NEYO,82-3.tif"
+  },
+  "historic-bayard-3": {
+    "author": "Unknown",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:Historic_American_Buildings_Survey,_Cervin_Robinson,_Photographer_May_30,_1970,_CORNICE_DETAIL._-_Bayard-Condict_Building,_65-69_Bleecker_Street,_New_York,_New_York_County,_NY_HABS_NY,31-NEYO,82-5.tif"
   }
 };
