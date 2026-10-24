@@ -3,15 +3,9 @@ name: Fetch landmark photo
 on:
   workflow_dispatch:
     inputs:
-      place_id:
-        description: Place id used in data.js (e.g. puck)
+      items:
+        description: 'One per line or separated by ";": id=Wikipedia article, id=File:Commons file.jpg, or id=search:Commons search'
         required: true
-      article:
-        description: English Wikipedia article title (e.g. Puck Building)
-        required: true
-      file:
-        description: Optional Commons file name to use instead of the article's main image
-        required: false
 
 permissions:
   contents: write
@@ -25,17 +19,16 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install pillow
-      - run: python .github/scripts/fetch_photo.py "$PLACE_ID" "$ARTICLE" "$FILE"
+      - name: Fetch photos
         env:
-          PLACE_ID: ${{ inputs.place_id }}
-          ARTICLE: ${{ inputs.article }}
-          FILE: ${{ inputs.file }}
-      - name: Commit photo
-        env:
-          PLACE_ID: ${{ inputs.place_id }}
+          ITEMS: ${{ inputs.items }}
+        run: |
+          mapfile -t specs < <(printf '%s' "$ITEMS" | tr ';' '\n' | sed '/^[[:space:]]*$/d')
+          python .github/scripts/fetch_photo.py "${specs[@]}"
+      - name: Commit photos
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add dist/assets dist/credits.js
-          git commit -m "Add $PLACE_ID photo from Wikimedia Commons"
+          git commit -m "Add landmark photos from Wikimedia Commons"
           git push
