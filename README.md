@@ -27,4 +27,4 @@ This is a mobile web app, not an App Store binary. The first collection covers M
 
 JavaScript syntax checks and browser checks for search, saving, walk progress, map rendering, landmark details, and the 390-pixel phone layout. No live GPS or physical-phone voice-output verification performed.
 
-Run `node --test tests/narration.test.cjs` for audio sequencing, pause/resume, cancellation, speed changes, and missing-voice recovery. Narration uses the browser SpeechSynthesis API and available device voices; no prerecorded or generated audio files are included. Keep the page open while listening. Displayed times are estimates, and progress follows completed sentences.
+Run `node --test tests/*.test.cjs` for audio sequencing, pause/resume, cancellation, speed changes, missing-voice recovery, recorded narration, and route filters. Narration uses the browser SpeechSynthesis API and available device voices, except for places with a recorded narration in `dist/assets/audio/`. Keep the page open while listening. Displayed times are estimates, and progress follows completed sentences.

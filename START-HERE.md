@@ -25,13 +25,14 @@ Pushing to `main` or `claude/quirky-darwin-atw6g0` runs `.github/workflows/pages
 - `dist/index.html`: page shell and script loading.
 - `dist/styles.css`: colors, layout, and responsive phone styles.
 - `dist/app.js`: navigation, search, saved places, maps, and walking routes.
-- `dist/data.js`: all seven landmarks and two walks.
+- `dist/data.js`: all eight landmarks and five scenic routes. A place with an `audio` field plays that recording instead of the device voice.
+- `dist/routes.js`: route filters and sorting, distances, walking times, and Google Maps route links.
 - `dist/audio-engine.js`: device narration, pause/resume, section skipping, and playback settings.
 - `dist/audio-ui.js`: audio panel, voice selector, transcript, and persistent mini-player.
 - `dist/credits.js`: photo attribution and source links.
 - `dist/assets/`: included photographs, icons, and Leaflet files.
 - `dist/manifest.webmanifest`: home-screen app metadata.
-- `tests/narration.test.cjs`: eight audio behavior tests.
+- `tests/`: audio, recorded-audio, and route tests.
 - `fetch_assets.py`, `image-metadata.json`, `image-credits.json`: original image collection helper and metadata. Images are already included; you do not need to run the helper. Its base directory is made portable in this export. It downloads source JPEGs, not replacements for the already included optimized WebP assets.
 
 ## Optional tests
@@ -39,7 +40,7 @@ Pushing to `main` or `claude/quirky-darwin-atw6g0` runs `.github/workflows/pages
 With Node.js installed, run from the `cityside` folder:
 
 ```sh
-node --test tests/narration.test.cjs
+node --test tests/*.test.cjs
 ```
 
 ## Hosting
