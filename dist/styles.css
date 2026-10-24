@@ -87,3 +87,7 @@ body{background:radial-gradient(ellipse at 6% 0%,#e6ecff 0,transparent 48%),var(
 .leaflet-tooltip.stop-label:before{display:none}
 .walk-map{height:420px}
 @media(max-width:650px){.walk-map{height:360px}.leaflet-tooltip.stop-label{font-size:10px;padding:2px 6px}}
+.route-map-top{margin:0 0 26px}
+.route-map-top .map-note{margin:10px 2px 0}
+.walk-heading{grid-template-columns:1fr;max-width:820px}
+@media(max-width:650px){.route-map-top .walk-map{margin:0 -22px;border-radius:0;border-left:0;border-right:0}}
