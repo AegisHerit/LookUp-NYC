@@ -178,5 +178,30 @@ const CREDITS = {
     "author": "Jim.henderson",
     "license": "CC0",
     "url": "https://commons.wikimedia.org/wiki/File:Astor_Library_sunny_jeh.jpg"
+  },
+  "historic-publictheater-5": {
+    "author": "Unknown authorUnknown author",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:Astor_Library_South_Hall.jpg"
+  },
+  "historic-publictheater-6": {
+    "author": "Chip",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:Astor_Library_cartoon_by_Chip.png"
+  },
+  "historic-publictheater-7": {
+    "author": "Gleason’s Pictorial Drawing Room Companon, Vol. 3 No. 13 (Saturday, September 25, 1852), Boston.",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:Astor_Library_Building,_New_York_City,_1852.tiff"
+  },
+  "historic-publictheater-8": {
+    "author": "Unknown authorUnknown author",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:Astor_Library_building_1854.jpg"
+  },
+  "historic-germania-1": {
+    "author": "Berenice Abbott",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:HARDWARE_STORE_316-318_Bowery_at_Bleeker_Street_in_New_York_City_by_Berenice_Abbott_in_1938.jpg"
   }
 };
