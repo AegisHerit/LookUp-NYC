@@ -1,11 +1,11 @@
-# Cityside — complete source code
+# LookUp NYC — source code
 
-This is the Cityside mobile web app with the updated cobalt, aqua, and lilac colors and the audio guide. All required images and client-side dependencies are included.
+This is the LookUp NYC mobile web app with the updated cobalt, aqua, and lilac colors and the audio guide. All required images and client-side dependencies are included.
 
 ## Run locally
 
-1. Unzip this download.
-2. Open Terminal inside the `cityside` folder.
+1. Clone or download this repository.
+2. Open Terminal inside the repository folder.
 3. With Python 3 installed, run:
 
 ```sh
@@ -37,7 +37,7 @@ Pushing to `main` or `claude/quirky-darwin-atw6g0` runs `.github/workflows/pages
 
 ## Optional tests
 
-With Node.js installed, run from the `cityside` folder:
+With Node.js installed, run from the repository folder:
 
 ```sh
 node --test tests/*.test.cjs
@@ -45,7 +45,7 @@ node --test tests/*.test.cjs
 
 ## Hosting
 
-Publish the contents of `dist` to a static web host, with HTTPS for location access on phones. The included `.openai/hosting.json` belongs to your existing Cityside Site. Remove its `project_id` before using it to create a separate Site.
+Publish the contents of `dist` to a static web host, with HTTPS for location access on phones. The included `.openai/hosting.json` belongs to the original hosting project this app started from. Remove its `project_id` before using it to create a separate Site.
 
 ## Audio and scope
 

@@ -1,6 +1,6 @@
 (function(root,factory){
   if(typeof module==='object'&&module.exports)module.exports=factory();
-  else root.CitysideAudio=factory();
+  else root.LookUpAudio=factory();
 })(typeof window!=='undefined'?window:globalThis,function(){
   'use strict';
   function sentences(text){return (String(text).match(/[^.!?]+(?:[.!?]+[”’"']?|$)/g)||[]).map(s=>s.trim()).filter(Boolean)}

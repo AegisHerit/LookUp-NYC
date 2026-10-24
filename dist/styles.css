@@ -163,3 +163,20 @@ body{background:radial-gradient(ellipse at 6% 0%,#e6ecff 0,transparent 48%),var(
 @keyframes filters-in{from{opacity:0;transform:translateY(-6px)}}
 @media(prefers-reduced-motion:reduce){.route-filters.open .more-filters{animation:none}}
 @media(max-width:650px){.route-filters .route-filter select{padding:11px 26px 11px 11px;background-position:right 9px center;font-size:13px}.more-filters-button{padding:0 11px;gap:5px}}
+/* Route page: sticky stop photo beside the list (larger screens) */
+.route-aside{position:sticky;top:24px;align-self:start;display:flex;flex-direction:column;gap:14px}
+.stop-preview{position:relative;display:block;aspect-ratio:4/5;max-height:72vh;border-radius:18px;overflow:hidden;background:var(--ink);color:#fff;isolation:isolate;box-shadow:0 10px 30px #15244c1f}
+.stop-preview img{position:absolute;inset:0;height:100%;transition:transform .6s}
+.stop-preview:hover img{transform:scale(1.03)}
+.stop-preview:after{content:'';position:absolute;inset:45% 0 0;background:linear-gradient(transparent,#102249e8);z-index:0}
+.preview-copy{position:absolute;left:24px;right:24px;bottom:22px;z-index:1;display:flex;flex-direction:column;gap:6px}
+.preview-copy .eyebrow{color:#85f6e5;font-size:9px;margin:0}
+.preview-copy strong{font-family:var(--serif);font-weight:400;font-size:28px;line-height:1.1;letter-spacing:-.5px}
+.preview-copy span:last-child{font-size:13px;opacity:.9;line-height:1.5}
+.stop-preview.swap img,.stop-preview.swap .preview-copy{animation:preview-in .5s ease-out}
+@keyframes preview-in{from{opacity:0}}
+.preview-dots{display:flex;justify-content:center;gap:7px}
+.preview-dots span{width:7px;height:7px;border-radius:50%;background:#c8d4ec;transition:background .3s,transform .3s}
+.preview-dots span.on{background:var(--accent);transform:scale(1.25)}
+@media(prefers-reduced-motion:reduce){.stop-preview.swap img,.stop-preview.swap .preview-copy{animation:none}.stop-preview img{transition:none}}
+@media(max-width:650px){.route-aside{position:static}.stop-preview,.preview-dots{display:none}}

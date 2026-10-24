@@ -1,4 +1,4 @@
-# Cityside
+# LookUp NYC
 
 A mobile-first NYC landmark guide for residents and visitors. Static HTML, CSS, and JavaScript; no API key or backend required.
 
