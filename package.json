@@ -1,0 +1,11 @@
+{
+  "name": "lookup-nyc",
+  "private": true,
+  "description": "LookUp NYC website plus a small Vonage SMS server for texting routes",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node server/sms-server.js",
+    "dev:sms": "DRY_RUN=1 node server/sms-server.js",
+    "test": "node --test tests/*.test.cjs"
+  }
+}
