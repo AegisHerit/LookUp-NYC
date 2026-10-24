@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Cityside — A little closer to New York</title>
+  <meta name="description" content="Find the stories hiding in plain sight. Explore New York landmarks, film locations, literary places, and short neighborhood walks.">
+  <meta name="theme-color" content="#f2f5ff"><meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="icon" href="/assets/icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/assets/icon-192.png">
+  <link rel="manifest" href="/manifest.webmanifest"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/assets/leaflet.css">
+  <script defer src="/assets/leaflet.js"></script><script defer src="/data.js"></script><script defer src="/credits.js"></script><script defer src="/audio-engine.js"></script><script defer src="/app.js"></script><script defer src="/audio-ui.js"></script>
+</head>
+<body>
+ <a class="skip-link" href="#main">Skip to content</a>
+ <header class="header"><div class="header-inner">
+  <a class="brand" href="#explore" aria-label="Cityside home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 1v30M1 16h30M5.4 5.4l21.2 21.2M5.4 26.6L26.6 5.4"/></svg>cityside<span class="brand-dot">.</span></a>
+  <nav class="desktop-nav" aria-label="Main navigation"></nav>
+  <button class="city-button" id="about-button" aria-label="About Cityside and using it on your phone"><span class="city-dot"></span> NEW YORK CITY <span class="tiny-info">i</span></button>
+ </div></header>
+ <main id="main" tabindex="-1"></main>
+ <footer class="site-footer"><span>A little closer to New York.</span><button id="footer-about">About Cityside & photo credits</button></footer>
+ <nav class="bottom-nav" aria-label="Mobile navigation"></nav>
+ <aside id="audio-dock" class="audio-dock" aria-label="Audio guide player" hidden></aside>
+ <div id="toast" role="status" aria-live="polite"></div>
+ <dialog id="about-dialog" aria-labelledby="about-heading"><button class="icon-button dialog-close" aria-label="Close about dialog">×</button><span class="eyebrow">HELLO, NEW YORK</span><h2 id="about-heading">A fresh pair of eyes.</h2><p>Cityside makes the city’s buildings a little more familiar—through short stories, things to spot, and walks you can take at your own pace.</p><h3>Take it with you</h3><p>On iPhone, open this page in Safari, tap Share, then Add to Home Screen. On Android, use your browser’s Install app or Add to Home screen option.</p><h3>Your own little collection</h3><p>Saved places and walking progress stay in this browser. Location is used only when you tap “Near me,” and is not saved by Cityside.</p><h3>A note for your walk</h3><p>Our first collection covers seven Manhattan landmarks. Times and distances are estimates. Routes begin outdoors; check official visitor information for interior access. Walking directions open in Google Maps.</p><details><summary>Photography & map credits</summary><div id="all-credits"></div><p>Cityside’s map is a simplified geographic overview, not a street map. Markers show landmark coordinates; land outlines are schematic. Display uses Leaflet.</p></details></dialog>
+</body></html>

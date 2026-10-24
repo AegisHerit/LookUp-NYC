@@ -1,0 +1,716 @@
+{
+  "batchcomplete": "",
+  "query": {
+    "normalized": [
+      {
+        "from": "File:E.V._Haughwout_Building,_Broadway,_New_York.jpg",
+        "to": "File:E.V. Haughwout Building, Broadway, New York.jpg"
+      },
+      {
+        "from": "File:Edificio_Fuller_(Flatiron)_en_2010_desde_el_Empire_State_crop_boxin.jpg",
+        "to": "File:Edificio Fuller (Flatiron) en 2010 desde el Empire State crop boxin.jpg"
+      },
+      {
+        "from": "File:Image-Grand_central_Station_Outside_Night_2.jpg",
+        "to": "File:Image-Grand central Station Outside Night 2.jpg"
+      },
+      {
+        "from": "File:Jefferson_Market_Library_at_sunset.jpg",
+        "to": "File:Jefferson Market Library at sunset.jpg"
+      },
+      {
+        "from": "File:New_York_Public_Library_-_Main_Branch_(51396225599).jpg",
+        "to": "File:New York Public Library - Main Branch (51396225599).jpg"
+      },
+      {
+        "from": "File:New_York_-_Manhattan_-_Plaza_Hotel.jpg",
+        "to": "File:New York - Manhattan - Plaza Hotel.jpg"
+      },
+      {
+        "from": "File:Washington_Square_Arch_(40430304445).jpg",
+        "to": "File:Washington Square Arch (40430304445).jpg"
+      }
+    ],
+    "pages": {
+      "64459158": {
+        "pageid": 64459158,
+        "ns": 6,
+        "title": "File:E.V. Haughwout Building, Broadway, New York.jpg",
+        "imagerepository": "local",
+        "imageinfo": [
+          {
+            "extmetadata": {
+              "DateTime": {
+                "value": "2021-09-27 02:57:39",
+                "source": "mediawiki-metadata",
+                "hidden": ""
+              },
+              "ObjectName": {
+                "value": "E.V. Haughwout Building, Broadway, New York",
+                "source": "mediawiki-metadata"
+              },
+              "CommonsMetadataExtension": {
+                "value": 1.2,
+                "source": "extension",
+                "hidden": ""
+              },
+              "Categories": {
+                "value": "E. V. Haughwout Building|Self-published work|Images by kzirkel|Files with coordinates missing SDC location of creation|United States photographs taken on 2017-11-25|November 2017 in Manhattan, New York City",
+                "source": "commons-categories",
+                "hidden": ""
+              },
+              "Assessments": {
+                "value": "",
+                "source": "commons-categories",
+                "hidden": ""
+              },
+              "GPSLatitude": {
+                "value": "40.721861",
+                "source": "commons-desc-page"
+              },
+              "GPSLongitude": {
+                "value": "-74.000111",
+                "source": "commons-desc-page"
+              },
+              "GPSMapDatum": {
+                "value": "WGS-84",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "ImageDescription": {
+                "value": "E.V. Haughwout Building, 488-492 Broadway, New York City.",
+                "source": "commons-desc-page"
+              },
+              "DateTimeOriginal": {
+                "value": "Taken on\u00a025 November 2017, 15:22:52",
+                "source": "commons-desc-page"
+              },
+              "Credit": {
+                "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+                "source": "commons-desc-page"
+              },
+              "Artist": {
+                "value": "<a href=\"//commons.wikimedia.org/wiki/User:Kzirkel\" title=\"User:Kzirkel\">Kenneth C. Zirkel</a>",
+                "source": "commons-desc-page"
+              },
+              "LicenseShortName": {
+                "value": "CC BY-SA 4.0",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "UsageTerms": {
+                "value": "Creative Commons Attribution-Share Alike 4.0",
+                "source": "commons-desc-page"
+              },
+              "AttributionRequired": {
+                "value": "true",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "LicenseUrl": {
+                "value": "https://creativecommons.org/licenses/by-sa/4.0",
+                "source": "commons-desc-page"
+              },
+              "Copyrighted": {
+                "value": "True",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "Restrictions": {
+                "value": "",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "License": {
+                "value": "cc-by-sa-4.0",
+                "source": "commons-templates",
+                "hidden": ""
+              }
+            }
+          }
+        ]
+      },
+      "12762087": {
+        "pageid": 12762087,
+        "ns": 6,
+        "title": "File:Edificio Fuller (Flatiron) en 2010 desde el Empire State crop boxin.jpg",
+        "imagerepository": "local",
+        "imageinfo": [
+          {
+            "extmetadata": {
+              "DateTime": {
+                "value": "2011-01-21 03:39:54",
+                "source": "mediawiki-metadata",
+                "hidden": ""
+              },
+              "ObjectName": {
+                "value": "Edificio Fuller (Flatiron) en 2010 desde el Empire State crop boxin",
+                "source": "mediawiki-metadata"
+              },
+              "CommonsMetadataExtension": {
+                "value": 1.2,
+                "source": "extension",
+                "hidden": ""
+              },
+              "Categories": {
+                "value": "Flatiron Building (New York City)|Retouched pictures|New York City photographs taken on 2010-01-09|Self-published work|PD-self|Images with extracted images|Extracted images|2010 in Flatiron District, Manhattan|Files with coordinates missing SDC location of creation|January 2010 in Manhattan, New York City",
+                "source": "commons-categories",
+                "hidden": ""
+              },
+              "Assessments": {
+                "value": "valued",
+                "source": "commons-categories",
+                "hidden": ""
+              },
+              "GPSLatitude": {
+                "value": "40.742339",
+                "source": "commons-desc-page"
+              },
+              "GPSLongitude": {
+                "value": "-73.988908",
+                "source": "commons-desc-page"
+              },
+              "GPSMapDatum": {
+                "value": "WGS-84",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "ImageDescription": {
+                "value": "Flatiron Building (formerly the Fuller Building), Manhattan, New York.",
+                "source": "commons-desc-page"
+              },
+              "DateTimeOriginal": {
+                "value": "2010-01-09",
+                "source": "commons-desc-page"
+              },
+              "Credit": {
+                "value": "<table class=\"layouttemplate\" lang=\"en\" dir=\"ltr\" style=\"margin:.5em auto;width:100%;background:var(--background-color-neutral-subtle,#f8f8f8);border:2px solid var(--border-color-muted,#EEE);color: inherit;padding:5px\">\n\n<tbody><tr>\n<td style=\"padding:5px\"><div class=\"wpImageAnnotatorControl wpImageAnnotatorOff\"><span typeof=\"mw:File\"><a href=\"//commons.wikimedia.org/wiki/File:Applications-graphics.svg\" class=\"mw-file-description\"><img src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Applications-graphics.svg/60px-Applications-graphics.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"45\" height=\"45\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/7/76/Applications-graphics.svg/120px-Applications-graphics.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"48\" data-file-height=\"48\"></a></span></div>\n</td>\n<td style=\"width:100%\">This  is a <i><b><span lang=\"en\" dir=\"ltr\"><a href=\"https://en.wikipedia.org/wiki/Image_editing\" class=\"extiw\" title=\"en:Image editing\"><span lang=\"en\" dir=\"ltr\">retouched picture</span></a></span></b></i>, which means that it has been digitally altered from its original version. Modifications: <i>cropped</i>. The\u00a0original can be viewed here: <b><a href=\"//commons.wikimedia.org/wiki/File:Edificio_Fuller_(Flatiron)_en_2010_desde_el_Empire_State.jpg\" title=\"File:Edificio Fuller (Flatiron) en 2010 desde el Empire State.jpg\">Edificio Fuller (Flatiron) en 2010 desde el Empire State.jpg</a>:\u00a0<span class=\"mw-image-border\" typeof=\"mw:File\"><a href=\"//commons.wikimedia.org/wiki/File:Edificio_Fuller_(Flatiron)_en_2010_desde_el_Empire_State.jpg\" class=\"mw-file-description\"><img src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Edificio_Fuller_%28Flatiron%29_en_2010_desde_el_Empire_State.jpg/20px-Edificio_Fuller_%28Flatiron%29_en_2010_desde_el_Empire_State.jpg?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"11\" height=\"16\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2b/Edificio_Fuller_%28Flatiron%29_en_2010_desde_el_Empire_State.jpg/40px-Edificio_Fuller_%28Flatiron%29_en_2010_desde_el_Empire_State.jpg?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"2592\" data-file-height=\"3872\"></a></span></b>. Modifications made by <a href=\"//commons.wikimedia.org/wiki/User:Beyond_My_Ken\" class=\"mw-redirect\" title=\"User:Beyond My Ken\">Beyond My Ken</a>.\n<p><span class=\"layouttemplateargs\" style=\"display:none;speak:none;\" title=\"template=Retouched+picture 1%3Dcropped 2%3DEdificio+Fuller+%28Flatiron%29+en+2010+desde+el+Empire+State.jpg 3%3DBeyond+My+Ken 4%3D 5%3D\">\u00a0</span>\n</p>\n</td></tr></tbody></table>",
+                "source": "commons-desc-page"
+              },
+              "Artist": {
+                "value": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:Imelenchon&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:Imelenchon (page does not exist)\">Imelenchon</a> (original work)",
+                "source": "commons-desc-page"
+              },
+              "Permission": {
+                "value": "<table class=\"licensetpl\" style=\"display:none\">\n<tbody><tr>\n<td><span class=\"licensetpl_short\">Public domain</span><span class=\"licensetpl_long\">Public domain</span><span class=\"licensetpl_link_req\">false</span><span class=\"licensetpl_attr_req\">false</span>\n</td></tr></tbody></table>\n<table style=\"width: 100%; clear: both; margin: 0.5em auto; background-color: var(--background-color-progressive-subtle, #f7f8ff); color: var(--color-base, #202122); border: var(--border-subtle, 2px solid #8888aa); border-spacing: 8px; padding: 0px;\" dir=\"ltr\" class=\"layouttemplate\" lang=\"en\">\n<tbody><tr>\n<td><span typeof=\"mw:File\"><span title=\"Public domain\"><img alt=\"Public domain\" src=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/PD-icon.svg/120px-PD-icon.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail\" decoding=\"async\" loading=\"lazy\" width=\"64\" height=\"64\" class=\"mw-file-element\" srcset=\"https://thumb.wikimedia.org/wikipedia/commons/thumb/6/62/PD-icon.svg/250px-PD-icon.svg.png?utm_source=commons.wikimedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail 2x\" data-file-width=\"196\" data-file-height=\"196\"></span></span>\n</td>\n<td>I, the copyright holder of this work, release this work into the <b><a href=\"https://en.wikipedia.org/wiki/en:public_domain\" class=\"extiw\" title=\"w:en:public domain\">public domain</a></b>. This applies worldwide.<br><small>In some countries this may not be legally possible; if so:</small><br><i>I grant anyone the right to use this work <b>for any purpose</b>, without any conditions, unless such conditions are required by law.</i>\n</td></tr></tbody></table>",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "LicenseShortName": {
+                "value": "Public domain",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "UsageTerms": {
+                "value": "Public domain",
+                "source": "commons-desc-page"
+              },
+              "AttributionRequired": {
+                "value": "false",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "Copyrighted": {
+                "value": "False",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "Restrictions": {
+                "value": "",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "License": {
+                "value": "pd",
+                "source": "commons-templates",
+                "hidden": ""
+              }
+            }
+          }
+        ]
+      },
+      "3667524": {
+        "pageid": 3667524,
+        "ns": 6,
+        "title": "File:Image-Grand central Station Outside Night 2.jpg",
+        "imagerepository": "local",
+        "imageinfo": [
+          {
+            "extmetadata": {
+              "DateTime": {
+                "value": "2008-03-06 07:21:36",
+                "source": "mediawiki-metadata",
+                "hidden": ""
+              },
+              "ObjectName": {
+                "value": "Image-Grand central Station Outside Night 2",
+                "source": "mediawiki-metadata"
+              },
+              "CommonsMetadataExtension": {
+                "value": 1.2,
+                "source": "extension",
+                "hidden": ""
+              },
+              "Categories": {
+                "value": "Featured pictures of New York City|GFDL|Exterior of Grand Central Terminal|License migration completed|Self-published work|Featured pictures on Wikipedia, English|Commons featured desktop backgrounds|Featured pictures of automobiles|Featured night photography|National Register of Historic Places with known IDs|Featured pictures of railway stations|Ford Crown Victoria (1998) taxis in New York City|Toyota Sienna taxis in New York City|Glory of Commerce statues and clock, Grand Central Terminal|Grand Central Terminal at night|Night taken with Nikon D40|Grand Central Terminal in 2008|Buildings in the United States taken with Nikon D40|Toyota Sienna (XL20) taxis|Featured pictures of buildings in the United States",
+                "source": "commons-categories",
+                "hidden": ""
+              },
+              "Assessments": {
+                "value": "featured",
+                "source": "commons-categories",
+                "hidden": ""
+              },
+              "GPSLatitude": {
+                "value": "40.752778",
+                "source": "commons-desc-page"
+              },
+              "GPSLongitude": {
+                "value": "-73.976389",
+                "source": "commons-desc-page"
+              },
+              "GPSMapDatum": {
+                "value": "WGS-84",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "ImageDescription": {
+                "value": "Grand Central terminal in New York, NY",
+                "source": "commons-desc-page"
+              },
+              "DateTimeOriginal": {
+                "value": "2008-01-19",
+                "source": "commons-desc-page"
+              },
+              "Credit": {
+                "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+                "source": "commons-desc-page"
+              },
+              "Artist": {
+                "value": "<a href=\"//commons.wikimedia.org/wiki/User:Fcb981\" title=\"User:Fcb981\">Fcb981</a>\u00a0; Eric Baetscher (attribution required)",
+                "source": "commons-desc-page"
+              },
+              "LicenseShortName": {
+                "value": "CC BY-SA 3.0",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "UsageTerms": {
+                "value": "Creative Commons Attribution-Share Alike 3.0",
+                "source": "commons-desc-page"
+              },
+              "AttributionRequired": {
+                "value": "true",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "LicenseUrl": {
+                "value": "http://creativecommons.org/licenses/by-sa/3.0/",
+                "source": "commons-desc-page"
+              },
+              "Copyrighted": {
+                "value": "True",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "Restrictions": {
+                "value": "",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "License": {
+                "value": "cc-by-sa-3.0",
+                "source": "commons-templates",
+                "hidden": ""
+              }
+            }
+          }
+        ]
+      },
+      "155902013": {
+        "pageid": 155902013,
+        "ns": 6,
+        "title": "File:Jefferson Market Library at sunset.jpg",
+        "imagerepository": "local",
+        "imageinfo": [
+          {
+            "extmetadata": {
+              "DateTime": {
+                "value": "2024-11-28 04:27:24",
+                "source": "mediawiki-metadata",
+                "hidden": ""
+              },
+              "ObjectName": {
+                "value": "Jefferson Market Library at sunset",
+                "source": "mediawiki-metadata"
+              },
+              "CommonsMetadataExtension": {
+                "value": 1.2,
+                "source": "extension",
+                "hidden": ""
+              },
+              "Categories": {
+                "value": "Public libraries|Self-published work|Photos from Wikicurious - Capturing the Moment|Uploaded via Campaign:Wikicurious Capturing the Moment 2024",
+                "source": "commons-categories",
+                "hidden": ""
+              },
+              "Assessments": {
+                "value": "",
+                "source": "commons-categories",
+                "hidden": ""
+              },
+              "ImageDescription": {
+                "value": "Jefferson Market Library at golden hour",
+                "source": "commons-desc-page"
+              },
+              "DateTimeOriginal": {
+                "value": "2024-11-26",
+                "source": "commons-desc-page"
+              },
+              "Credit": {
+                "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+                "source": "commons-desc-page"
+              },
+              "Artist": {
+                "value": "<a href=\"//commons.wikimedia.org/wiki/User:GuardianKC\" title=\"User:GuardianKC\">GuardianKC</a>",
+                "source": "commons-desc-page"
+              },
+              "LicenseShortName": {
+                "value": "CC BY-SA 4.0",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "UsageTerms": {
+                "value": "Creative Commons Attribution-Share Alike 4.0",
+                "source": "commons-desc-page"
+              },
+              "AttributionRequired": {
+                "value": "true",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "LicenseUrl": {
+                "value": "https://creativecommons.org/licenses/by-sa/4.0",
+                "source": "commons-desc-page"
+              },
+              "Copyrighted": {
+                "value": "True",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "Restrictions": {
+                "value": "",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "License": {
+                "value": "cc-by-sa-4.0",
+                "source": "commons-templates",
+                "hidden": ""
+              }
+            }
+          }
+        ]
+      },
+      "30948945": {
+        "pageid": 30948945,
+        "ns": 6,
+        "title": "File:New York - Manhattan - Plaza Hotel.jpg",
+        "imagerepository": "local",
+        "imageinfo": [
+          {
+            "extmetadata": {
+              "DateTime": {
+                "value": "2014-02-02 22:29:59",
+                "source": "mediawiki-metadata",
+                "hidden": ""
+              },
+              "ObjectName": {
+                "value": "New York - Manhattan - Plaza Hotel",
+                "source": "mediawiki-metadata"
+              },
+              "CommonsMetadataExtension": {
+                "value": 1.2,
+                "source": "extension",
+                "hidden": ""
+              },
+              "Categories": {
+                "value": "Uploaded with Vicu\u00f1aUploader|Files by Yarl|National Register of Historic Places with known IDs|Exterior of the Plaza Hotel",
+                "source": "commons-categories",
+                "hidden": ""
+              },
+              "Assessments": {
+                "value": "",
+                "source": "commons-categories",
+                "hidden": ""
+              },
+              "GPSLatitude": {
+                "value": "40.763700",
+                "source": "commons-desc-page"
+              },
+              "GPSLongitude": {
+                "value": "-73.973300",
+                "source": "commons-desc-page"
+              },
+              "GPSMapDatum": {
+                "value": "WGS-84",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "ImageDescription": {
+                "value": "Plaza Hotel in Manhattan, New York City.",
+                "source": "commons-desc-page"
+              },
+              "DateTimeOriginal": {
+                "value": "2012-07-10",
+                "source": "commons-desc-page"
+              },
+              "Credit": {
+                "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+                "source": "commons-desc-page"
+              },
+              "Artist": {
+                "value": "<a href=\"//commons.wikimedia.org/wiki/User:Yarl\" title=\"User:Yarl\">Yarl</a>",
+                "source": "commons-desc-page"
+              },
+              "LicenseShortName": {
+                "value": "CC BY-SA 3.0",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "UsageTerms": {
+                "value": "Creative Commons Attribution-Share Alike 3.0",
+                "source": "commons-desc-page"
+              },
+              "AttributionRequired": {
+                "value": "true",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "Attribution": {
+                "value": "Pawe\u0142 Marynowski / Wikimedia Commons",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "LicenseUrl": {
+                "value": "https://creativecommons.org/licenses/by-sa/3.0",
+                "source": "commons-desc-page"
+              },
+              "Copyrighted": {
+                "value": "True",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "Restrictions": {
+                "value": "",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "License": {
+                "value": "cc-by-sa-3.0",
+                "source": "commons-templates",
+                "hidden": ""
+              }
+            }
+          }
+        ]
+      },
+      "109173665": {
+        "pageid": 109173665,
+        "ns": 6,
+        "title": "File:New York Public Library - Main Branch (51396225599).jpg",
+        "imagerepository": "local",
+        "imageinfo": [
+          {
+            "extmetadata": {
+              "DateTime": {
+                "value": "2021-08-23 03:07:05",
+                "source": "mediawiki-metadata",
+                "hidden": ""
+              },
+              "ObjectName": {
+                "value": "New York Public Library - Main Branch (51396225599)",
+                "source": "mediawiki-metadata"
+              },
+              "CommonsMetadataExtension": {
+                "value": 1.2,
+                "source": "extension",
+                "hidden": ""
+              },
+              "Categories": {
+                "value": "Exterior of the New York Public Library Main Branch|New York City photographs taken on 2021-08-21|Files with coordinates missing SDC location of creation|Flickr images reviewed by FlickreviewR 2|Libraries in the United States photographed in 2021|Midtown Manhattan in 2021|August 2021 in Manhattan, New York City|2021 New York City photographs by ajay suresh",
+                "source": "commons-categories",
+                "hidden": ""
+              },
+              "Assessments": {
+                "value": "",
+                "source": "commons-categories",
+                "hidden": ""
+              },
+              "GPSLatitude": {
+                "value": "40.753350",
+                "source": "commons-desc-page"
+              },
+              "GPSLongitude": {
+                "value": "-73.980853",
+                "source": "commons-desc-page"
+              },
+              "GPSMapDatum": {
+                "value": "WGS-84",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "ImageDescription": {
+                "value": "New York Public Library- Main Branch",
+                "source": "commons-desc-page"
+              },
+              "DateTimeOriginal": {
+                "value": "2021-08-21 15:52",
+                "source": "commons-desc-page"
+              },
+              "Credit": {
+                "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/ajay_suresh/51396225599/\">New York Public Library- Main Branch</a>",
+                "source": "commons-desc-page"
+              },
+              "Artist": {
+                "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/83136374@N05\">ajay_suresh</a>",
+                "source": "commons-desc-page"
+              },
+              "LicenseShortName": {
+                "value": "CC BY 2.0",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "UsageTerms": {
+                "value": "Creative Commons Attribution 2.0",
+                "source": "commons-desc-page"
+              },
+              "AttributionRequired": {
+                "value": "true",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "LicenseUrl": {
+                "value": "https://creativecommons.org/licenses/by/2.0",
+                "source": "commons-desc-page"
+              },
+              "Copyrighted": {
+                "value": "True",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "Restrictions": {
+                "value": "",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "License": {
+                "value": "cc-by-2.0",
+                "source": "commons-templates",
+                "hidden": ""
+              }
+            }
+          }
+        ]
+      },
+      "131039729": {
+        "pageid": 131039729,
+        "ns": 6,
+        "title": "File:Washington Square Arch (40430304445).jpg",
+        "imagerepository": "local",
+        "imageinfo": [
+          {
+            "extmetadata": {
+              "DateTime": {
+                "value": "2023-04-23 03:04:21",
+                "source": "mediawiki-metadata",
+                "hidden": ""
+              },
+              "ObjectName": {
+                "value": "Washington Square Arch (40430304445)",
+                "source": "mediawiki-metadata"
+              },
+              "CommonsMetadataExtension": {
+                "value": 1.2,
+                "source": "extension",
+                "hidden": ""
+              },
+              "Categories": {
+                "value": "Washington Square Arch|New York City photographs taken on 2018-04-02|Files with coordinates missing SDC location of creation|Flickr images reviewed by FlickreviewR 2|Washington Square Park in 2018|April 2018 in Manhattan, New York City|Photographs by Nan Palmero",
+                "source": "commons-categories",
+                "hidden": ""
+              },
+              "Assessments": {
+                "value": "",
+                "source": "commons-categories",
+                "hidden": ""
+              },
+              "GPSLatitude": {
+                "value": "40.731241",
+                "source": "commons-desc-page"
+              },
+              "GPSLongitude": {
+                "value": "-73.997081",
+                "source": "commons-desc-page"
+              },
+              "GPSMapDatum": {
+                "value": "WGS-84",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "ImageDescription": {
+                "value": "Washington Square Arch",
+                "source": "commons-desc-page"
+              },
+              "DateTimeOriginal": {
+                "value": "Taken on\u00a02 April 2018, 16:41",
+                "source": "commons-desc-page"
+              },
+              "Credit": {
+                "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/nanpalmero/40430304445/\">Washington Square Arch</a>",
+                "source": "commons-desc-page"
+              },
+              "Artist": {
+                "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/people/97402086@N00\">Nan Palmero</a> from San Antonio, TX, USA",
+                "source": "commons-desc-page"
+              },
+              "LicenseShortName": {
+                "value": "CC BY 2.0",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "UsageTerms": {
+                "value": "Creative Commons Attribution 2.0",
+                "source": "commons-desc-page"
+              },
+              "AttributionRequired": {
+                "value": "true",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "LicenseUrl": {
+                "value": "https://creativecommons.org/licenses/by/2.0",
+                "source": "commons-desc-page"
+              },
+              "Copyrighted": {
+                "value": "True",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "Restrictions": {
+                "value": "",
+                "source": "commons-desc-page",
+                "hidden": ""
+              },
+              "License": {
+                "value": "cc-by-2.0",
+                "source": "commons-templates",
+                "hidden": ""
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}
