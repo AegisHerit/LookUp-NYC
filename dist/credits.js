@@ -113,5 +113,70 @@ const CREDITS = {
     "author": "Unknown",
     "license": "Public domain",
     "url": "https://commons.wikimedia.org/wiki/File:Historic_American_Buildings_Survey,_Cervin_Robinson,_Photographer_May_30,_1970,_CORNICE_DETAIL._-_Bayard-Condict_Building,_65-69_Bleecker_Street,_New_York,_New_York_County,_NY_HABS_NY,31-NEYO,82-5.tif"
+  },
+  "flatiron-2": {
+    "author": "Jean-Christophe BENOIST",
+    "license": "CC BY 3.0",
+    "url": "https://commons.wikimedia.org/wiki/File:NYC_-_Flatiron_building_-_Top_detail.jpg"
+  },
+  "nypl-2": {
+    "author": "John Dillenbeck",
+    "license": "CC0",
+    "url": "https://commons.wikimedia.org/wiki/File:New_York_Public_Library_Main_Branch_Lion.jpg"
+  },
+  "grandcentral-2": {
+    "author": "D. Benjamin Miller",
+    "license": "CC0",
+    "url": "https://commons.wikimedia.org/wiki/File:Main_Concourse,_Grand_Central_Terminal,_August_30,_2024_-_001.jpg"
+  },
+  "plaza-2": {
+    "author": "Jazz Guy from New Jersey, United States",
+    "license": "CC BY 2.0",
+    "url": "https://commons.wikimedia.org/wiki/File:New_York_City_Snow_Day,_Christmas_Day_2008_(3137402444).jpg"
+  },
+  "jefferson-2": {
+    "author": "William Dunnell",
+    "license": "CC BY-SA 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Jefferson_Market_Library_Clock_Tower_Detail.jpg"
+  },
+  "washington-2": {
+    "author": "Beyond My Ken",
+    "license": "CC BY-SA 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Washington_in_Peace_Calder.jpg"
+  },
+  "haughwout-2": {
+    "author": "Attributed to Silas A. Holmes (American, 1820 - 1886) (1820 - 1886) – photographer (American) Details on Google Art Project",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:Attributed_to_Silas_A._Holmes_(American_-_Broadway_Looking_North_from_Between_Grand_and_Broome_Streets_-_Google_Art_Project.jpg"
+  },
+  "puck-2": {
+    "author": "Beyond My Ken",
+    "license": "CC BY-SA 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Corner_Puck.jpg"
+  },
+  "oldcathedral-2": {
+    "author": "User:Jim.henderson",
+    "license": "CC BY-SA 3.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Old_St_Pats_Mott_St_East_door_jeh.jpg"
+  },
+  "germania-2": {
+    "author": "Beyond My Ken",
+    "license": "CC BY-SA 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Germania_Bank_Building_190_Bowery_entrance.jpg"
+  },
+  "bayard-2": {
+    "author": "Bmzuckerman",
+    "license": "CC BY 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Louis_H._Sullivan_-_Bayard-Condict_Building_(A),_New_York,_NY.jpg"
+  },
+  "basquiat-2": {
+    "author": "Beyond My Ken",
+    "license": "CC BY-SA 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:57_Great_Jones_Street.jpg"
+  },
+  "publictheater-2": {
+    "author": "Jim.henderson",
+    "license": "CC0",
+    "url": "https://commons.wikimedia.org/wiki/File:Astor_Library_sunny_jeh.jpg"
   }
 };
