@@ -87,7 +87,7 @@ const LookUp=(()=>{
   }
 
   function photo(p,cls){const c=p.lookUpCrop;return `<span class="${cls}"><img src="assets/${p.id}.webp" alt="${esc(p.name)}">${c?`<span class="lookup-ring" style="--x:${c.x}%;--y:${c.y}%;--r:${c.r}%"></span>`:''}</span>`}
-  function spotButton(p){const s=isSpotted(p.id);return `<button class="button ${s?'secondary':''}" data-lookup="spot" data-id="${p.id}" aria-pressed="${s}">${s?'Spotted ✓':'Spotted it ✓'}</button>`}
+  function spotButton(p){const s=isSpotted(p.id);return `<button class="button ${s?'secondary':''}" data-lookup="spot" data-id="${p.id}" aria-pressed="${s}">${s?'Spied ✓':'I spy it ✓'}</button>`}
   function showView(p){
     closeView();const w=walk(),i=w?w.stops.indexOf(p.id):-1;
     const v=document.createElement('div');v.id='lookup-view';v.className='lookup-view';v.setAttribute('role','dialog');v.setAttribute('aria-modal','true');v.setAttribute('aria-labelledby','lookup-cue');
@@ -104,11 +104,11 @@ const LookUp=(()=>{
   function button(w){return on&&walkId===w.id?`<button class="button lookup-start on" data-lookup="end">End Look Up mode</button>`:`<button class="button lookup-start" data-lookup="start" data-walk="${w.id}"><span aria-hidden="true">↑</span>Start Look Up mode</button>`}
   function refreshButtons(){document.querySelectorAll('.lookup-start').forEach(b=>{const id=b.dataset.walk||walkId||location.hash.split('/')[1];const w=WALKS.find(x=>x.id===id);if(w)b.outerHTML=button(w)})}
 
-  // "Details I've spotted" on the Saved page.
+  // The "I Spy" collection on the Saved page.
   function savedSection(){
     const list=spotted().sort((a,b)=>b.at-a.at);if(!list.length)return '';
-    return `<section class="spotted-section"><span class="eyebrow">LOOK UP MODE</span><h2>Details I’ve spotted</h2><div class="spotted-grid">${list.map(({id,at})=>{const p=byId(id),c=p.lookUpCrop||{x:50,y:50,r:30};
-      return `<a class="spotted-card" href="#place/${id}"><span class="spot-thumb"><img src="assets/${id}.webp" alt="" loading="lazy" style="--x:${c.x};--y:${c.y};--r:${c.r}"></span><span class="spot-copy"><strong>${esc(p.name)}</strong><span>${esc(p.lookUp)}</span><small>Spotted ${new Date(at).toLocaleDateString('en-US',{month:'short',day:'numeric'})}</small></span></a>`}).join('')}</div></section>`;
+    return `<section class="spotted-section"><span class="eyebrow">LOOK UP MODE</span><h2>I Spy</h2><p class="spotted-sub">Details you’ve found on your walks.</p><div class="spotted-grid">${list.map(({id,at})=>{const p=byId(id),c=p.lookUpCrop||{x:50,y:50,r:30};
+      return `<a class="spotted-card" href="#place/${id}"><span class="spot-thumb"><img src="assets/${id}.webp" alt="" loading="lazy" style="--x:${c.x};--y:${c.y};--r:${c.r}"></span><span class="spot-copy"><strong>${esc(p.name)}</strong><span>${esc(p.lookUp)}</span><small>Spied ${new Date(at).toLocaleDateString('en-US',{month:'short',day:'numeric'})}</small></span></a>`}).join('')}</div></section>`;
   }
 
   document.addEventListener('click',e=>{const b=e.target.closest('[data-lookup]');if(!b)return;const a=b.dataset.lookup;
@@ -117,7 +117,7 @@ const LookUp=(()=>{
     else if(a==='close'){closeView()}
     else if(a==='story'){closeView()}
     else if(a==='replay'){const p=byId(b.dataset.id);if(p)speak(p)}
-    else if(a==='spot'){const p=byId(b.dataset.id);if(!p)return;const now=toggleSpotted(p.id);b.outerHTML=spotButton(p);toast(now?'Nice eye. Added to Details I’ve spotted in Saved.':'Removed from your spotted details.')}});
+    else if(a==='spot'){const p=byId(b.dataset.id);if(!p)return;const now=toggleSpotted(p.id);b.outerHTML=spotButton(p);toast(now?'Nice eye. Added to your I Spy collection.':'Removed from your I Spy collection.')}});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('lookup-view'))closeView()});
 
   // The first page is drawn before this file loads; add our pieces if they're missing.
