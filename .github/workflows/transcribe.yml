@@ -1,0 +1,30 @@
+name: Transcribe audio
+
+on:
+  workflow_dispatch:
+    inputs:
+      path:
+        description: Audio file to transcribe (e.g. dist/assets/audio/puck.mp3)
+        required: true
+
+jobs:
+  transcribe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install faster-whisper
+      - name: Transcribe
+        env:
+          AUDIO: ${{ inputs.path }}
+        run: |
+          python - <<'PY'
+          import os
+          from faster_whisper import WhisperModel
+          model = WhisperModel('small.en', device='cpu', compute_type='int8')
+          segments, _ = model.transcribe(os.environ['AUDIO'], beam_size=5)
+          for s in segments:
+              print(f'SEG {s.start:7.2f} {s.end:7.2f} {s.text.strip()}')
+          PY
