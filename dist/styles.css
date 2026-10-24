@@ -305,3 +305,5 @@ body{overflow-x:clip}
  .hero-caption span.caption-location{color:var(--muted);opacity:1;margin-top:5px}
  .hero-caption .round-arrow{border-color:var(--line);color:var(--accent);background:var(--paper)}
 }
+.next-route{flex-wrap:wrap;justify-content:flex-start;text-align:left;gap:4px 8px}
+.next-route-label{flex-basis:100%;font-size:9px;letter-spacing:1.2px;text-transform:uppercase;opacity:.75}
