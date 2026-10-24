@@ -25,7 +25,7 @@ Pushing to `main` or `claude/quirky-darwin-atw6g0` runs `.github/workflows/pages
 - `dist/index.html`: page shell and script loading.
 - `dist/styles.css`: colors, layout, and responsive phone styles.
 - `dist/app.js`: navigation, search, saved places, maps, and walking routes.
-- `dist/data.js`: all eight landmarks and five scenic routes. A place with an `audio` field plays that recording instead of the device voice.
+- `dist/data.js`: all thirteen landmarks and six scenic routes. A place with an `audio` field plays that recording instead of the device voice.
 - `dist/routes.js`: route filters and sorting, distances, walking times, and Google Maps route links.
 - `dist/audio-engine.js`: device narration, pause/resume, section skipping, and playback settings.
 - `dist/audio-ui.js`: audio panel, voice selector, transcript, and persistent mini-player.

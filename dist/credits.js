@@ -45,7 +45,7 @@ const CREDITS = {
     "url": "https://commons.wikimedia.org/wiki/File:Saint_Pats_Old_Cathedral_Manh_jeh.JPG"
   },
   "germania": {
-    "author": "Jim.henderson; cropped by Beyond My Ken (talk) 02:56, 6 February 2013 (UTC)",
+    "author": "Jim.henderson (cropped by Beyond My Ken)",
     "license": "Public domain",
     "url": "https://commons.wikimedia.org/wiki/File:Germania_190_Bowery_jeh_crop.JPG"
   },

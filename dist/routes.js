@@ -43,16 +43,22 @@
     const street=p.address.replace(/^(\d+)[–-]\d+/,'$1');
     return / at /.test(street)?`${p.name}, New York, NY`:`${p.name}, ${street}, New York, NY`;
   }
-  // Google Maps walking directions through every stop, in order.
-  // With an origin ({lat,lng}), the route starts there and every stop becomes a waypoint.
-  function mapsLink(route,byId,origin){
-    const stops=route.stops.map(byId);
-    const start=origin?`${origin.lat},${origin.lng}`:mapsPlace(stops[0]),middle=origin?stops.slice(0,-1):stops.slice(1,-1);
-    const point=mapsPlace;
-    const params=new URLSearchParams({api:'1',origin:start,destination:point(stops[stops.length-1]),travelmode:'walking'});
-    if(middle.length)params.set('waypoints',middle.map(point).join('|'));
+  function dirLink(points){
+    const params=new URLSearchParams({api:'1',origin:points[0],destination:points[points.length-1],travelmode:'walking'});
+    if(points.length>2)params.set('waypoints',points.slice(1,-1).join('|'));
     return 'https://www.google.com/maps/dir/?'+params.toString();
   }
+  // Google Maps walking directions through every stop, in order.
+  // Google's phone apps allow at most 3 stops between start and end, so longer routes
+  // are split into even parts that share a stop: 6 stops become 1–4 and 4–6.
+  function mapsLinks(route,byId){
+    const names=route.stops.map(id=>mapsPlace(byId(id))),legs=names.length-1,parts=Math.max(1,Math.ceil(legs/4)),out=[];
+    let start=0;
+    for(let k=0;k<parts;k++){const end=start+Math.ceil((legs-start)/(parts-k));out.push({url:dirLink(names.slice(start,end+1)),from:start+1,to:end+1});start=end}
+    return out;
+  }
+  // Walking directions from a {lat,lng} point to the route's first stop.
+  function mapsToStart(route,byId,origin){return dirLink([`${origin.lat},${origin.lng}`,mapsPlace(byId(route.stops[0]))])}
 
-  return {miles,walkMinutes,distanceText,filterRoutes,mapsPlace,mapsLink};
+  return {miles,walkMinutes,distanceText,filterRoutes,mapsPlace,mapsLinks,mapsToStart};
 });
