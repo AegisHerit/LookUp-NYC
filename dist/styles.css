@@ -257,3 +257,13 @@ body.story-open{overflow:hidden}
 .demo-switch input{width:18px;height:18px;margin-top:2px;accent-color:var(--accent);flex-shrink:0}
 .demo-switch strong{display:block;color:var(--ink);font-size:13px}
 .lookup-view .button.lookup-skip{background:transparent;color:#85f6e5;border:1px dashed #85f6e588;justify-content:center;margin-top:4px}
+/* Brand: building mark + "lookupNYC" wordmark with eyes for the o's */
+.brand{gap:12px;color:#0b2a5b;font-weight:700;letter-spacing:-1.2px}
+.brand>svg{width:auto;height:38px;stroke:none;fill:initial;flex-shrink:0}
+.wordmark{display:inline-flex;align-items:baseline;font-size:31px;line-height:1}
+.wordmark .up{color:#2563eb}
+.wordmark .eye{position:relative;display:inline-block;width:.5em;height:.5em;border:.12em solid currentColor;border-radius:50%;margin:0 .02em;box-sizing:border-box}
+.wordmark .eye:after{content:'';position:absolute;left:50%;top:50%;width:.15em;height:.15em;border-radius:50%;background:currentColor;transform:translate(-50%,-50%)}
+@media(max-width:650px){.brand{gap:9px}.brand>svg{height:30px}.wordmark{font-size:25px}}
+@media(max-width:380px){.brand>svg{height:26px}.wordmark{font-size:22px}}
+body{overflow-x:clip}

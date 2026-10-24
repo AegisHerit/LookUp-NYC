@@ -4,7 +4,6 @@
 // Nothing is uploaded; sharing uses the phone's own share sheet.
 const Story=(()=>{
   const W=1080,H=1920,C={bg:'#f2f5ff',aqua:'#def5f3',ink:'#17264d',muted:'#5b6884',accent:'#3452ed',mint:'#85f6e5',line:'#d8e0f1'};
-  const SPIRE='M16 1v6M13 7h6v4h-6zM11 11h10v19H11zM7 30h18M14 15v3M18 15v3M14 22v3M18 22v3';
   let walkId=null,selfie=null,canvas=null,blob=null,waiting=null;
   const walk=()=>WALKS.find(w=>w.id===walkId);
   const loadImg=src=>new Promise((ok,no)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=no;i.src=src});
@@ -33,7 +32,16 @@ const Story=(()=>{
 
   // Fill a box with an image, cropping the overflow (like object-fit: cover).
   function cover(ctx,img,x,y,w,h){const r=Math.max(w/img.naturalWidth,h/img.naturalHeight),sw=w/r,sh=h/r;ctx.drawImage(img,(img.naturalWidth-sw)/2,(img.naturalHeight-sh)/2,sw,sh,x,y,w,h)}
-  function spire(ctx,x,y,size,color){ctx.save();ctx.translate(x,y);ctx.scale(size/32,size/32);ctx.strokeStyle=color;ctx.lineWidth=2.6;ctx.lineCap='round';ctx.lineJoin='round';ctx.stroke(new Path2D(SPIRE));ctx.restore()}
+  // The LookUp NYC logo: the building mark, then "lookupNYC" with eyes for the o's.
+  const BUILDING='M0 0H29.8V9.2H25.7V100H5.9V9.2H0Z M29.8 0L95.7 10V18.7H91.6V100H29.8Z';
+  function brand(ctx,x,y){
+    const h=66,k=h/100;ctx.save();ctx.translate(x,y);ctx.scale(k,k);ctx.fillStyle='#2563eb';ctx.fill(new Path2D(BUILDING));ctx.fillStyle='#fbc531';
+    [24.1,40.1,56.1,72.1].forEach(r=>{ctx.fillRect(11.7,r,7.8,9.8);[37.7,55.6,73.7].forEach(c=>ctx.fillRect(c,r,10,9.8))});ctx.restore();
+    let cx=x+95.7*k+18;const base=y+h-6,size=58;ctx.font=`700 ${size}px "DM Sans", system-ui, sans-serif`;ctx.textAlign='left';
+    const text=(t,color)=>{ctx.fillStyle=color;ctx.fillText(t,cx,base);cx+=ctx.measureText(t).width-size*.02};
+    const eye=()=>{const d=size*.5,r=d/2,ring=size*.12,ex=cx+r+size*.02,ey=base-r;ctx.beginPath();ctx.arc(ex,ey,r-ring/2,0,Math.PI*2);ctx.lineWidth=ring;ctx.strokeStyle='#0b2a5b';ctx.stroke();ctx.beginPath();ctx.arc(ex,ey,size*.075,0,Math.PI*2);ctx.fillStyle='#0b2a5b';ctx.fill();cx+=d+size*.04};
+    text('l','#0b2a5b');eye();eye();text('k','#0b2a5b');text('up','#2563eb');text('NYC','#0b2a5b');
+  }
 
   async function draw(){
     const w=walk();if(!w)return;const s=LookUpRoutes.routeSteps(w,byId);
@@ -45,7 +53,7 @@ const Story=(()=>{
     const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,C.bg);g.addColorStop(1,C.aqua);ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
     collage(ctx,stopPhotos);
     // Brand.
-    spire(ctx,90,104,58,C.accent);ctx.fillStyle=C.accent;ctx.font='600 50px "DM Sans", system-ui, sans-serif';ctx.fillText('LookUp NYC.',160,150);
+    brand(ctx,92,96);
     ctx.fillStyle=C.accent;ctx.font='600 26px "DM Sans", system-ui, sans-serif';ctx.save();ctx.letterSpacing='6px';ctx.fillText('ROUTE COMPLETE ✓',92,236);ctx.restore();
     // Polaroid, slightly tilted.
     const pw=780,ph=900,px=W/2,py=760,date=new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
