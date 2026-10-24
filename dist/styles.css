@@ -79,3 +79,7 @@ body{background:radial-gradient(ellipse at 6% 0%,#e6ecff 0,transparent 48%),var(
 .arrival-close{border:0;background:none;font-size:22px;color:var(--muted);padding:4px 6px;align-self:start}
 @keyframes arrival-in{from{opacity:0;transform:translate(-50%,-12px)}}
 @media(max-width:650px){.route-filters{display:grid;grid-template-columns:1fr 1fr;gap:9px}.route-filter select{min-width:0;width:100%}.route-filters .near-button{grid-column:span 2;justify-content:center}}
+.route-actions{display:flex;flex-wrap:wrap;gap:10px}
+@media(max-width:650px){.route-actions .button{flex:1 1 100%}}
+[hidden]{display:none!important}
+.button.maps{background:var(--paper);color:var(--accent);border-color:var(--accent)}

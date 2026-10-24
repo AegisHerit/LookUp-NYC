@@ -36,13 +36,23 @@
     return list;
   }
 
+  // How a stop is named for Google Maps: building name plus street address, so the
+  // directions list shows "Puck Building" instead of a dropped pin.
+  // "488–492 Broadway" becomes "488 Broadway"; addresses like "X at Y" use the name alone.
+  function mapsPlace(p){
+    const street=p.address.replace(/^(\d+)[–-]\d+/,'$1');
+    return / at /.test(street)?`${p.name}, New York, NY`:`${p.name}, ${street}, New York, NY`;
+  }
   // Google Maps walking directions through every stop, in order.
-  function mapsLink(route,byId){
-    const addr=id=>byId(id).address+', New York, NY';
-    const stops=route.stops,params=new URLSearchParams({api:'1',origin:addr(stops[0]),destination:addr(stops[stops.length-1]),travelmode:'walking'});
-    if(stops.length>2)params.set('waypoints',stops.slice(1,-1).map(addr).join('|'));
+  // With an origin ({lat,lng}), the route starts there and every stop becomes a waypoint.
+  function mapsLink(route,byId,origin){
+    const stops=route.stops.map(byId);
+    const start=origin?`${origin.lat},${origin.lng}`:mapsPlace(stops[0]),middle=origin?stops.slice(0,-1):stops.slice(1,-1);
+    const point=mapsPlace;
+    const params=new URLSearchParams({api:'1',origin:start,destination:point(stops[stops.length-1]),travelmode:'walking'});
+    if(middle.length)params.set('waypoints',middle.map(point).join('|'));
     return 'https://www.google.com/maps/dir/?'+params.toString();
   }
 
-  return {miles,walkMinutes,distanceText,filterRoutes,mapsLink};
+  return {miles,walkMinutes,distanceText,filterRoutes,mapsPlace,mapsLink};
 });
