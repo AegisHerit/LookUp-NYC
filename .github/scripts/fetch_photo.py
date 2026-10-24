@@ -32,7 +32,8 @@ def find_file(source):
     pages = api('https://en.wikipedia.org/w/api.php', action='query', titles=source, prop='pageimages', piprop='name', redirects=1)['query']['pages']
     page = next(iter(pages.values()))
     if 'pageimage' not in page:
-        raise SystemExit(f'No main image on Wikipedia article {source}')
+        print(f'No main image on Wikipedia article {source}; searching Commons instead.')
+        return find_file('search:' + source)
     return page['pageimage']
 
 strip = lambda s: re.sub(r'<[^>]+>', '', s or '').strip()
@@ -40,20 +41,27 @@ credits_path = root / 'dist/credits.js'
 text = credits_path.read_text()
 credits = json.loads(text[text.index('{'):text.rindex('}') + 1])
 
+failed = []
 for spec in sys.argv[1:]:
     place_id, source = (s.strip() for s in spec.split('=', 1))
-    file_name = find_file(source)
-    info = next(iter(api('https://commons.wikimedia.org/w/api.php', action='query', titles='File:' + file_name,
-                         prop='imageinfo', iiprop='url|extmetadata', iiurlwidth=1280)['query']['pages'].values()))['imageinfo'][0]
-    meta = info['extmetadata']
-    author = strip(meta.get('Artist', {}).get('value')) or 'Unknown'
-    license_name = strip(meta.get('LicenseShortName', {}).get('value'))
-    print(f'{place_id}: {file_name} | {author} | {license_name}')
-    if not re.search(r'CC|Public domain|PD', license_name, re.I):
-        raise SystemExit(f'{place_id}: not a free license, stopping.')
-    img = Image.open(io.BytesIO(get(info['thumburl']))).convert('RGB')
-    img.thumbnail((1280, 1400))
-    img.save(root / 'dist/assets' / f'{place_id}.webp', 'WEBP', quality=80, method=6)
-    credits[place_id] = {'author': author, 'license': license_name, 'url': info['descriptionurl']}
+    try:
+        file_name = find_file(source)
+        info = next(iter(api('https://commons.wikimedia.org/w/api.php', action='query', titles='File:' + file_name,
+                             prop='imageinfo', iiprop='url|extmetadata', iiurlwidth=1280)['query']['pages'].values()))['imageinfo'][0]
+        meta = info['extmetadata']
+        author = strip(meta.get('Artist', {}).get('value')) or 'Unknown'
+        license_name = strip(meta.get('LicenseShortName', {}).get('value'))
+        print(f'{place_id}: {file_name} | {author} | {license_name}')
+        if not re.search(r'CC|Public domain|PD', license_name, re.I):
+            raise SystemExit('not a free license')
+        img = Image.open(io.BytesIO(get(info['thumburl']))).convert('RGB')
+        img.thumbnail((1280, 1400))
+        img.save(root / 'dist/assets' / f'{place_id}.webp', 'WEBP', quality=80, method=6)
+        credits[place_id] = {'author': author, 'license': license_name, 'url': info['descriptionurl']}
+    except BaseException as e:
+        print(f'{place_id}: FAILED ({e})')
+        failed.append(place_id)
 
 credits_path.write_text('const CREDITS = ' + json.dumps(credits, indent=2, ensure_ascii=False) + ';\n')
+if failed:
+    print('Could not fetch:', ', '.join(failed))
