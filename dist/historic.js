@@ -11,12 +11,16 @@ const HISTORIC={
     {img:'historic-oldcathedral-3',year:'1893',caption:'St. Patrick’s at Mott and Prince Streets, rebuilt after the fire.',source:'King’s Handbook of New York City'}
   ],
   publictheater:[
+    {img:'historic-publictheater-7',year:'1852',caption:'The library as first drawn, two years before it opened. This one building is today’s south third; two matching wings came later.',source:'Gleason’s Pictorial'},
     {img:'historic-publictheater-1',year:'1854',caption:'Inside the Astor Library the year it opened: a skylit reading hall ringed by galleries of books.',source:'Gleason’s Pictorial'},
     {img:'historic-publictheater-3',year:'c. 1870',caption:'The library on Lafayette Place, then a quiet, tree-lined street.',source:'New York Public Library'},
+    {img:'historic-publictheater-5',year:'1875',caption:'The South Hall. Nothing could be borrowed: you asked at the desk and read under the skylight.',source:'Wikimedia Commons'},
+    {img:'historic-publictheater-6',year:'1892',caption:'A cartoonist mocks the library’s famously short hours: “open every other Monday from 9.58 to 10 a.m.”',source:'Cartoon by “Chip”'},
     {img:'historic-publictheater-4',year:'1893',caption:'The finished building, all three sections, before it became a theater.',source:'King’s Handbook of New York City'}
   ],
   bayard:[
     {img:'historic-bayard-1',year:'1970',caption:'The top of the building and its winged figures, photographed for the Historic American Buildings Survey.',source:'Library of Congress · Cervin Robinson'},
+    {img:'historic-bayard-4',year:'1970',caption:'The full Bleecker Street front, seen from the southeast, with its plain neighbors on either side.',source:'Library of Congress · Cervin Robinson'},
     {img:'historic-bayard-2',year:'1970',caption:'The Bleecker Street entrance and its arch of terra-cotta ornament.',source:'Library of Congress · Cervin Robinson'},
     {img:'historic-bayard-3',year:'1970',caption:'A close look at the cornice, where Sullivan’s ornament is at its most lace-like.',source:'Library of Congress · Cervin Robinson'}
   ]

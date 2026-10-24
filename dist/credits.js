@@ -180,7 +180,7 @@ const CREDITS = {
     "url": "https://commons.wikimedia.org/wiki/File:Astor_Library_sunny_jeh.jpg"
   },
   "historic-publictheater-5": {
-    "author": "Unknown authorUnknown author",
+    "author": "Unknown author",
     "license": "Public domain",
     "url": "https://commons.wikimedia.org/wiki/File:Astor_Library_South_Hall.jpg"
   },
@@ -190,33 +190,13 @@ const CREDITS = {
     "url": "https://commons.wikimedia.org/wiki/File:Astor_Library_cartoon_by_Chip.png"
   },
   "historic-publictheater-7": {
-    "author": "Gleason’s Pictorial Drawing Room Companon, Vol. 3 No. 13 (Saturday, September 25, 1852), Boston.",
+    "author": "Gleason’s Pictorial Drawing-Room Companion, 1852",
     "license": "Public domain",
     "url": "https://commons.wikimedia.org/wiki/File:Astor_Library_Building,_New_York_City,_1852.tiff"
-  },
-  "historic-publictheater-8": {
-    "author": "Unknown authorUnknown author",
-    "license": "Public domain",
-    "url": "https://commons.wikimedia.org/wiki/File:Astor_Library_building_1854.jpg"
-  },
-  "historic-germania-1": {
-    "author": "Berenice Abbott",
-    "license": "Public domain",
-    "url": "https://commons.wikimedia.org/wiki/File:HARDWARE_STORE_316-318_Bowery_at_Bleeker_Street_in_New_York_City_by_Berenice_Abbott_in_1938.jpg"
   },
   "historic-bayard-4": {
     "author": "Unknown",
     "license": "Public domain",
     "url": "https://commons.wikimedia.org/wiki/File:Historic_American_Buildings_Survey,_Cervin_Robinson,_Photographer_May_30,_1970,_BOTTOM_OF_BUILDING_FROM_SOUTHEAST._-_Bayard-Condict_Building,_65-69_Bleecker_Street,_New_York,_New_HABS_NY,31-NEYO,82-2.tif"
-  },
-  "historic-bayard-5": {
-    "author": "Unknown",
-    "license": "Public domain",
-    "url": "https://commons.wikimedia.org/wiki/File:Historic_American_Buildings_Survey,_Cervin_Robinson,_Photographer_May_30,_1970,_ENTRANCE_DETAIL._-_Bayard-Condict_Building,_65-69_Bleecker_Street,_New_York,_New_York_County,_NY_HABS_NY,31-NEYO,82-4.tif"
-  },
-  "historic-oldcathedral-4": {
-    "author": "Francis Kearney",
-    "license": "Public domain",
-    "url": "https://commons.wikimedia.org/wiki/File:Old_St._Patrick%27s_Cathedral_on_Mott_Street,_NYC_1831.jpg"
   }
 };
