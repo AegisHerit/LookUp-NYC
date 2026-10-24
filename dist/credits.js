@@ -38,5 +38,30 @@ const CREDITS = {
     "author": "ajay_suresh",
     "license": "CC BY 2.0",
     "url": "https://commons.wikimedia.org/wiki/File:Puck_Building_(51660567363).jpg"
+  },
+  "oldcathedral": {
+    "author": "Jim.henderson",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:Saint_Pats_Old_Cathedral_Manh_jeh.JPG"
+  },
+  "germania": {
+    "author": "Jim.henderson; cropped by Beyond My Ken (talk) 02:56, 6 February 2013 (UTC)",
+    "license": "Public domain",
+    "url": "https://commons.wikimedia.org/wiki/File:Germania_190_Bowery_jeh_crop.JPG"
+  },
+  "bayard": {
+    "author": "Carptrash at English Wikipedia",
+    "license": "CC BY-SA 3.0",
+    "url": "https://commons.wikimedia.org/wiki/File:SullivanNY1.jpg"
+  },
+  "basquiat": {
+    "author": "Flintmichigan",
+    "license": "CC BY-SA 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Jean-Michel_Basquiat_(1960-1988)_home_on_57_Great_Jones_Street.jpg"
+  },
+  "publictheater": {
+    "author": "Ajay Suresh from New York, NY, USA",
+    "license": "CC BY 2.0",
+    "url": "https://commons.wikimedia.org/wiki/File:The_Public_Theater_(48072652481).jpg"
   }
 };
