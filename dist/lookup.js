@@ -9,6 +9,11 @@ const LookUp=(()=>{
   const SPOT_KEY='lookup-spotted',SAFETY_KEY='lookup-safety-seen';
   let on=false,walkId=null,wake=null,audioCtx=null,dwell=null,dwellTimer=null;
   const shown=new Set();
+  // Demo mode, for showing the app without walking: turn on with ?demo=1 (off with ?demo=0)
+  // or the switch in the About panel. Location isn't used; an "Arrive" button stands in for walking.
+  const DEMO_KEY='lookup-demo';
+  {const q=new URLSearchParams(location.search).get('demo');if(q==='1')putStore(DEMO_KEY,true);if(q==='0')putStore(DEMO_KEY,false)}
+  const demo=()=>readStore(DEMO_KEY,false)===true;
   const walk=()=>WALKS.find(w=>w.id===walkId);
   const still=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -31,8 +36,8 @@ const LookUp=(()=>{
   function start(id){if(!WALKS.some(w=>w.id===id))return;if(readStore(SAFETY_KEY,false)===true)begin(id);else safety(id)}
   function begin(id){
     on=true;walkId=id;dwell=null;unlockAudio();keepAwake();
-    if(watchId===null)startLive();
-    bar();refreshButtons();toast('Look Up mode is on. Walk to the first stop; we’ll tell you when to look up.');
+    if(demo())shown.clear();else if(watchId===null)startLive();
+    bar();refreshButtons();toast(demo()?'Demo mode: tap Arrive to stand at each stop.':'Look Up mode is on. Walk to the first stop; we’ll tell you when to look up.');
     if(locationPoint)onFix();
   }
   function end(){
@@ -40,7 +45,7 @@ const LookUp=(()=>{
     try{window.speechSynthesis&&speechSynthesis.cancel()}catch{}
     try{player.stop()}catch{}
     if(wake){wake.release().catch(()=>{});wake=null}
-    if(watchId!==null)stopLive();
+    if(watchId!==null)stopLive();else if(demo()){locationPoint=null;refreshLive(true)}
     document.getElementById('lookup-bar')?.remove();closeView();refreshButtons();toast('Look Up mode is off.');
   }
 
@@ -54,12 +59,13 @@ const LookUp=(()=>{
   }
 
   // Small status bar while the mode is on.
-  function nextStop(){const w=walk();if(!w)return null;const done=progress[w.id]||[];const id=w.stops.find(s=>!done.includes(s)&&!shown.has(s));return id?byId(id):null}
+  function nextStop(){const w=walk();if(!w)return null;const done=demo()?[]:progress[w.id]||[];const id=w.stops.find(s=>!done.includes(s)&&!shown.has(s));return id?byId(id):null}
   function bar(){
     if(!on)return;let el=document.getElementById('lookup-bar');
     if(!el){el=document.createElement('div');el.id='lookup-bar';el.className='lookup-bar';el.setAttribute('role','status');document.body.appendChild(el)}
     const n=nextStop(),d=n&&locationPoint?` · ${LookUpRoutes.distanceText(distance(n))}`:'';
-    el.innerHTML=`<span class="lookup-bar-arrow" aria-hidden="true">↑</span><span class="lookup-bar-text"><strong>Look Up mode</strong><span>${n?`Next: ${esc(n.name)}${d}`:locationPoint?'Every stop visited. Nicely done.':'Finding your location…'}</span></span><button data-lookup="end">End</button>`;
+    const waiting=dwell&&byId(dwell.id),line=waiting?`Arriving at ${esc(waiting.name)}… hold still`:n?`Next: ${esc(n.name)}${d}`:(locationPoint||demo())?'Every stop visited. Nicely done.':'Finding your location…';
+    el.innerHTML=`<span class="lookup-bar-arrow" aria-hidden="true">↑</span><span class="lookup-bar-text"><strong>Look Up mode${demo()?' · Demo':''}</strong><span>${line}</span></span>${demo()&&n&&!waiting?`<button class="lookup-demo" data-lookup="demo-arrive">Arrive ▸</button>`:''}<button data-lookup="end">End</button>`;
   }
 
   // Called by checkArrival() on every location update while the mode is on.
@@ -68,15 +74,18 @@ const LookUp=(()=>{
     const near=w.stops.map(byId).filter(p=>!shown.has(p.id)&&distance(p)<=RANGE_MILES).sort((a,b)=>distance(a)-distance(b))[0];
     if(!near){clearTimeout(dwellTimer);dwell=null;return}
     if(dwell&&dwell.id===near.id)return;
-    clearTimeout(dwellTimer);dwell={id:near.id};
+    clearTimeout(dwellTimer);dwell={id:near.id};bar();
     dwellTimer=setTimeout(()=>{const p=byId(dwell&&dwell.id);if(on&&p&&locationPoint&&distance(p)<=RANGE_MILES)arrive(p);else dwell=null},DWELL_MS);
   }
 
   function arrive(p){
-    shown.add(p.id);dwell=null;const w=walk();
-    if(w&&!(progress[w.id]||[]).includes(p.id)){progress[w.id]=[...(progress[w.id]||[]),p.id];putStore('lookup-progress',progress);if(location.hash==='#route/'+w.id){const y=scrollY;render();scrollTo(0,y)}if(progress[w.id].length===w.stops.length&&typeof Story!=='undefined')Story.open(w.id)}
+    shown.add(p.id);dwell=null;const w=walk();let finished=false;
+    if(w&&!(progress[w.id]||[]).includes(p.id)){progress[w.id]=[...(progress[w.id]||[]),p.id];putStore('lookup-progress',progress);if(location.hash==='#route/'+w.id){const y=scrollY;render();scrollTo(0,y)}finished=progress[w.id].length===w.stops.length}
     chime();if(navigator.vibrate)navigator.vibrate([90,60,90]);
     document.getElementById('arrival')?.remove();showView(p);bar();speak(p);
+    // The story waits until this view is closed. In demo mode a finished route can be replayed,
+    // so there it shows once every stop has been reached this time.
+    if((finished||(demo()&&w&&w.stops.every(s=>shown.has(s))))&&typeof Story!=='undefined')Story.open(w.id);
   }
   // Read the cue, then play the place's story (recording or device voice).
   function speak(p){
@@ -116,6 +125,7 @@ const LookUp=(()=>{
     else if(a==='end'){e.preventDefault();end()}
     else if(a==='close'){closeView()}
     else if(a==='story'){closeView()}
+    else if(a==='demo-arrive'){const n=nextStop();if(n){locationPoint={lat:n.lat,lng:n.lng};onFix()}}
     else if(a==='replay'){const p=byId(b.dataset.id);if(p)speak(p)}
     else if(a==='spot'){const p=byId(b.dataset.id);if(!p)return;const now=toggleSpotted(p.id);b.outerHTML=spotButton(p);toast(now?'Nice eye. Added to your I Spy collection.':'Removed from your I Spy collection.')}});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('lookup-view'))closeView()});
@@ -125,6 +135,9 @@ const LookUp=(()=>{
     if(page==='route'){const a=document.querySelector('.route-actions'),w=WALKS.find(x=>x.id===id);if(a&&w&&!a.querySelector('.lookup-start'))a.insertAdjacentHTML('afterbegin',button(w))}
     if(page==='saved'&&!document.querySelector('.spotted-section'))main.insertAdjacentHTML('beforeend',savedSection())}
   fillIn();
+  {const about=document.getElementById('about-dialog');if(about&&!about.querySelector('.demo-switch')){
+    about.insertAdjacentHTML('beforeend',`<label class="demo-switch"><input type="checkbox" ${demo()?'checked':''}><span><strong>Demo mode</strong>Show Look Up mode and route stories without walking.</span></label>`);
+    about.querySelector('.demo-switch input').addEventListener('change',e=>{putStore(DEMO_KEY,e.target.checked);toast(e.target.checked?'Demo mode on. Start Look Up mode on any route.':'Demo mode off.');if(on)bar()})}}
 
   return {active:()=>on,onFix,button,savedSection,start,end};
 })();

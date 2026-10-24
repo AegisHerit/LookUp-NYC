@@ -39,9 +39,11 @@ const Story=(()=>{
     const w=walk();if(!w)return;const s=LookUpRoutes.routeSteps(w,byId);
     try{await Promise.all(['400 40px "DM Sans"','600 40px "DM Sans"'].map(f=>document.fonts.load(f)))}catch{}
     const photo=selfie||await loadImg(`assets/${w.image}.webp`).catch(()=>null);
+    const stopPhotos=(await Promise.all(w.stops.map(id=>loadImg(`assets/${id}.webp`).catch(()=>null)))).filter(Boolean);
     canvas=canvas||document.createElement('canvas');canvas.width=W;canvas.height=H;const ctx=canvas.getContext('2d');
     // Background: the app's soft blue fading to aqua.
     const g=ctx.createLinearGradient(0,0,0,H);g.addColorStop(0,C.bg);g.addColorStop(1,C.aqua);ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    collage(ctx,stopPhotos);
     // Brand.
     spire(ctx,90,104,58,C.accent);ctx.fillStyle=C.accent;ctx.font='600 50px "DM Sans", system-ui, sans-serif';ctx.fillText('LookUp NYC.',160,150);
     ctx.fillStyle=C.accent;ctx.font='600 26px "DM Sans", system-ui, sans-serif';ctx.save();ctx.letterSpacing='6px';ctx.fillText('ROUTE COMPLETE ✓',92,236);ctx.restore();
@@ -65,6 +67,12 @@ const Story=(()=>{
     ctx.fillStyle=C.muted;ctx.font='400 26px "DM Sans", system-ui, sans-serif';ctx.textAlign='center';ctx.fillText('Look up. New York is talking.  ·  aegisherit.github.io/LookUp-NYC',W/2,1836);ctx.textAlign='left';
     blob=null;const img=document.getElementById('story-img');if(img){img.src=canvas.toDataURL('image/jpeg',.85);img.closest('.story-preview').classList.add('ready')}
   }
+  // The route's buildings fill the background, softened under a wash of the app's colors.
+  function collage(ctx,imgs){if(!imgs.length)return;
+    const cols=imgs.length<3?1:2,rows=Math.ceil(imgs.length/cols),ch=H/rows;
+    imgs.forEach((img,i)=>{const r=Math.floor(i/cols),inRow=Math.min(cols,imgs.length-r*cols),cw=W/inRow,c=i-r*cols;cover(ctx,img,c*cw,r*ch,cw,ch)});
+    const wash=ctx.createLinearGradient(0,0,0,H);wash.addColorStop(0,'rgba(242,245,255,.90)');wash.addColorStop(.45,'rgba(242,245,255,.78)');wash.addColorStop(1,'rgba(222,245,243,.92)');
+    ctx.fillStyle=wash;ctx.fillRect(0,0,W,H)}
   function fit(ctx,text,max){if(ctx.measureText(text).width<=max)return text;let t=text;while(t.length>3&&ctx.measureText(t+'…').width>max)t=t.slice(0,-1);return t+'…'}
   function drawRoute(ctx,w,box){
     const pts=w.stops.map(byId),lat=pts.map(p=>p.lat),lng=pts.map(p=>p.lng),k=Math.cos(40.73*Math.PI/180);
