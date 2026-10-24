@@ -92,15 +92,6 @@ body{background:radial-gradient(ellipse at 6% 0%,#e6ecff 0,transparent 48%),var(
 .walk-heading{grid-template-columns:1fr;max-width:820px}
 @media(max-width:650px){.route-map-top .walk-map{margin:0 -22px;border-radius:0;border-left:0;border-right:0}}
 .street-tiles{filter:saturate(.55) brightness(1.04)}
-/* Route page: walk at a glance */
-.glance{display:grid;grid-template-columns:repeat(4,1fr);background:var(--paper);border:1px solid var(--line);border-radius:16px;margin:4px 0 8px;overflow:hidden}
-.glance-tile{display:flex;flex-direction:column;gap:3px;padding:16px 18px;border-left:1px solid var(--line)}
-.glance-tile:first-child{border-left:0}
-.glance-steps{background:var(--aqua-soft)}
-.glance-num{font-family:var(--serif);font-size:34px;line-height:1;letter-spacing:-1px;color:var(--ink);font-variant-numeric:tabular-nums}
-.glance-steps .glance-num{color:var(--accent)}
-.glance-label{font-size:11px;color:var(--muted)}
-.glance-note{font-size:10px!important;color:var(--muted);margin:0 0 18px}
 /* What's in store */
 .route-teasers{margin:34px 0 8px}
 .route-teasers h2{font-size:31px;letter-spacing:-1px;margin:0 0 12px}
@@ -130,4 +121,21 @@ body{background:radial-gradient(ellipse at 6% 0%,#e6ecff 0,transparent 48%),var(
 @keyframes stop-ping{0%{opacity:0;box-shadow:0 0 0 0 #3452ed80}35%{opacity:1}100%{box-shadow:0 0 0 14px #3452ed00}}
 @keyframes label-in{from{opacity:0}}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.leaflet-marker-icon.stop-arrive,.leaflet-tooltip.stop-arrive{animation:none}.teaser-card img{transition:none}}
-@media(max-width:650px){.glance{grid-template-columns:1fr 1fr}.glance-tile:nth-child(3){border-left:0}.glance-tile:nth-child(n+3){border-top:1px solid var(--line)}.glance-num{font-size:30px}.route-teasers h2{font-size:27px}.teaser-rail{grid-auto-columns:78%;margin:0 -22px;padding:2px 22px 12px;scroll-padding:0 22px}.teaser-card{height:280px}}
+@media(max-width:650px){.route-teasers h2{font-size:27px}.teaser-rail{grid-auto-columns:78%;margin:0 -22px;padding:2px 22px 12px;scroll-padding:0 22px}.teaser-card{height:280px}}
+
+/* Route page: compact stats with walking footprints */
+.route-subtitle{font-size:16px!important;color:var(--muted);margin:-4px 0 14px}
+.glance{display:inline-flex;align-items:center;gap:12px;background:var(--aqua-soft);border-radius:999px;padding:8px 16px 8px 12px;margin:0 0 18px;max-width:100%}
+.footprints{position:relative;width:96px;height:26px;flex-shrink:0}
+.print{position:absolute;left:calc(var(--i)*15px);width:20px;height:10px;fill:var(--accent);opacity:0;animation:print-step 3.6s ease-in-out infinite;animation-delay:calc(var(--i)*.3s)}
+.print.left{top:2px;transform:rotate(-8deg)}
+.print.right{top:14px;transform:rotate(8deg)}
+@keyframes print-step{0%{opacity:0}8%{opacity:.95}55%{opacity:.75}80%,100%{opacity:0}}
+.glance-stats{margin:0!important;font-size:13px!important;color:var(--ink)!important;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.glance-stats strong{font-weight:650;color:var(--accent);font-variant-numeric:tabular-nums}
+.glance-stats span{color:var(--muted)}
+.leg-prints{width:12px;height:20px;fill:var(--accent);opacity:.8;flex-shrink:0}
+.stop-go .icon{width:15px;height:15px;vertical-align:-2px;color:var(--accent)}
+.route-stop .stop-actions{margin-top:8px}
+@media(prefers-reduced-motion:reduce){.print{animation:none;opacity:calc(.35 + var(--i)*.12)}}
+@media(max-width:650px){.glance{gap:9px;padding:7px 13px 7px 10px}.footprints{width:80px;height:24px}.print{left:calc(var(--i)*12px);width:17px;height:9px}.print.right{top:13px}.glance-stats{font-size:12px!important;gap:5px}}
