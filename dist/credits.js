@@ -33,5 +33,10 @@ const CREDITS = {
     "author": "Nan Palmero from San Antonio, TX, USA",
     "license": "CC BY 2.0",
     "url": "https://commons.wikimedia.org/wiki/File%3AWashington_Square_Arch_%2840430304445%29.jpg"
+  },
+  "puck": {
+    "author": "ajay_suresh",
+    "license": "CC BY 2.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Puck_Building_(51660567363).jpg"
   }
 };
