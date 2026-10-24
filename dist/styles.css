@@ -53,3 +53,4 @@ body{background:radial-gradient(ellipse at 6% 0%,#e6ecff 0,transparent 48%),var(
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 
 .brand{white-space:nowrap}@media(max-width:650px){.brand{font-size:23px;letter-spacing:-1px;gap:7px}.brand-dot{margin-left:-7px}}@media(max-width:380px){.brand{font-size:20px}}
+.brand>svg{fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
