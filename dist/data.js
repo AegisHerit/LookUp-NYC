@@ -61,6 +61,15 @@ const PLACES = [
     culture:[{type:'City life · an everyday invention',title:'Shopping, but upstairs',text:'Before elevators became ordinary, reaching upper floors was part of the challenge of selling goods. Here, a shopping trip offered customers a new way to move through a building.'}],
     tip:'This is an exterior stop on busy sidewalks. The historic elevator is not offered as a visitor attraction.',
     sources:[['Historic Districts Council · Haughwout Building','https://hdc.org/buildings/e-v-haughwout-building/'],['SAH Archipedia · Haughwout Building','https://sah-archipedia.org/buildings/NY-01-061-0008']]
+  },
+  {
+    id:'puck',name:'Puck Building',neighborhood:'SoHo / Nolita',address:'295 Lafayette Street',year:'1886',style:'A red-brick palace for a humor magazine',lat:40.72430,lng:-73.99535,tags:['Film & TV','Hidden gems','Architecture'],time:8,
+    teaser:'A gold-leafed sprite still keeps an eye on Houston Street.',hook:'Find the little gold figure. Then take in the whole block.',
+    story:'This red-brick building was made for Puck, a satirical magazine famous for its colorful political cartoons, and the printers who produced it. Albert Wagner designed it in a round-arched Romanesque Revival style, with long rows of arched windows that let daylight into busy workrooms. Puck closed in 1918, but its namesake never left: gilded statues of Shakespeare’s mischievous sprite still stand on the building.',
+    looks:['At the corner of Houston and Mulberry Streets, look up for the gilded Puck holding a mirror.','Walk around to Lafayette Street to find a second Puck above the entrance.','Follow the rows of arched windows: tall at the bottom, smaller as they rise.'],
+    culture:[{type:'On screen · exterior',title:'Will & Grace (1998–2006, 2017–2020)',text:'The exterior stands in for the building that houses Grace Adler Designs, Grace’s interior design firm. Recognize the outside—the office itself was a TV set.'}],
+    tip:'Enjoy this stop from the public sidewalk. The building is home to private residences and businesses.',
+    sources:[['NYC Landmarks Preservation Commission · designation report (1983)','https://s-media.nyc.gov/agencies/lpc/lp/1226.pdf'],['IMDb · Will & Grace filming locations','https://www.imdb.com/title/tt0157246/locations/']]
   }
 ];
 const WALKS = [
