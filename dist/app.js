@@ -72,8 +72,9 @@ map.fitBounds(places.map(p=>[p.lat,p.lng]),walk?{paddingTopLeft:[90,40],paddingB
  const land=[[40.700,-74.019],[40.713,-74.016],[40.730,-74.012],[40.745,-74.008],[40.759,-74.001],[40.778,-73.988],[40.795,-73.974],[40.812,-73.956],[40.820,-73.933],[40.806,-73.928],[40.789,-73.938],[40.774,-73.943],[40.759,-73.958],[40.747,-73.969],[40.736,-73.973],[40.723,-73.973],[40.712,-73.978],[40.701,-73.997]];
  // A simple drawn outline of Manhattan, shown until (or unless) the street map loads.
  const outline=L.layerGroup([L.polygon(land,{color:'#a9bddf',weight:1,fillColor:'#eef1ff',fillOpacity:1,interactive:false}),L.polygon([[40.768,-73.981],[40.800,-73.958],[40.796,-73.949],[40.764,-73.973]],{color:'#8ad8cc',weight:1,fillColor:'#b0eadc',fillOpacity:1,interactive:false})]).addTo(map);
- // Street map on route pages, so stops sit on real streets. Swaps out the outline once tiles arrive.
- if(walk){const streets=L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:19,attribution:'© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> · © <a href="https://carto.com/attributions" target="_blank" rel="noopener noreferrer">CARTO</a>'});
+ // OpenStreetMap street map on route pages (no key needed), so stops sit on real streets.
+ // Swaps out the drawn outline once tiles arrive; if they can't load, the outline stays.
+ if(walk){const streets=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,className:'street-tiles',attribution:'© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors'});
   streets.once('tileload',()=>{if(mapInstance===map){map.removeLayer(outline);areaLabels.forEach(l=>map.removeLayer(l))}});streets.addTo(map)}
  const labels=[['MIDTOWN',40.758,-73.988],['CHELSEA',40.746,-73.999],['GREENWICH VILLAGE',40.732,-74.008],['SOHO',40.724,-74.009],['CENTRAL PARK',40.776,-73.968]];
  const areaLabels=labels.map(([name,lat,lng])=>L.marker([lat,lng],{interactive:false,keyboard:false,icon:L.divIcon({className:'area-label',html:esc(name),iconSize:[110,20],iconAnchor:[55,10]})}).addTo(map));
