@@ -104,6 +104,7 @@ const LookUp=(()=>{
      <h2 class="lookup-name">${esc(p.name)}</h2><p class="lookup-cue" id="lookup-cue">${esc(p.lookUp)}</p>
      <figure class="lookup-photo">${photo(p,'lookup-frame')}</figure>
      <div class="lookup-actions">${spotButton(p)}<button class="button secondary" data-lookup="replay" data-id="${p.id}">Hear it again</button><a class="text-link" href="#place/${p.id}" data-lookup="story">Read the story</a></div>
+     ${demo()?`<button class="button lookup-skip" data-lookup="demo-skip">${nextStop()?'Skip to next stop ▸':'Finish route ▸'}</button>`:''}
      <button class="lookup-end" data-lookup="end">End Look Up mode</button></div>`;
     document.body.appendChild(v);document.body.classList.add('lookup-open');v.querySelector('[data-lookup="spot"]').focus({preventScroll:true});
   }
@@ -125,6 +126,7 @@ const LookUp=(()=>{
     else if(a==='end'){e.preventDefault();end()}
     else if(a==='close'){closeView()}
     else if(a==='story'){closeView()}
+    else if(a==='demo-skip'){try{speechSynthesis.cancel()}catch{}try{player.stop()}catch{}clearTimeout(dwellTimer);dwell=null;closeView();const n=nextStop();if(n){locationPoint={lat:n.lat,lng:n.lng};arrive(n)}else bar()}
     else if(a==='demo-arrive'){const n=nextStop();if(n){locationPoint={lat:n.lat,lng:n.lng};onFix()}}
     else if(a==='replay'){const p=byId(b.dataset.id);if(p)speak(p)}
     else if(a==='spot'){const p=byId(b.dataset.id);if(!p)return;const now=toggleSpotted(p.id);b.outerHTML=spotButton(p);toast(now?'Nice eye. Added to your I Spy collection.':'Removed from your I Spy collection.')}});
