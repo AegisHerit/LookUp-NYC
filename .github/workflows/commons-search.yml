@@ -1,0 +1,23 @@
+name: Search Commons photos
+
+on:
+  workflow_dispatch:
+    inputs:
+      queries:
+        description: 'Searches, separated by ";"'
+        required: true
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Search
+        env:
+          QUERIES: ${{ inputs.queries }}
+        run: |
+          mapfile -t q < <(printf '%s' "$QUERIES" | tr ';' '\n' | sed '/^[[:space:]]*$/d')
+          python .github/scripts/commons_search.py "${q[@]}"
