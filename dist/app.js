@@ -107,3 +107,5 @@ main.addEventListener('click',e=>{const b=e.target.closest('[data-action]');if(!
 const dialog=document.getElementById('about-dialog');function showAbout(){document.getElementById('all-credits').innerHTML=PLACES.map(p=>`<div class="credit-row"><strong>${p.name}</strong>${credit(p)}</div>`).join('');dialog.showModal()}document.getElementById('about-button').onclick=showAbout;document.getElementById('footer-about').onclick=showAbout;dialog.querySelector('.dialog-close').onclick=()=>dialog.close();dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});
 document.querySelector('.skip-link').addEventListener('click',e=>{e.preventDefault();main.focus({preventScroll:false})});
 window.addEventListener('hashchange',()=>{render();main.focus({preventScroll:true})});
+
+if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
