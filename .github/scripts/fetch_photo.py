@@ -6,7 +6,7 @@ A source is one of:
   File:Some photo.jpg            a specific Commons file
   search:57 Great Jones Street   the first photo a Commons search finds
 """
-import io, json, re, sys, urllib.parse, urllib.request
+import io, json, re, sys, time, urllib.error, urllib.parse, urllib.request
 from pathlib import Path
 from PIL import Image
 
@@ -14,7 +14,13 @@ root = Path(__file__).resolve().parents[2]
 headers = {'User-Agent': 'LookUpNYC/1.0 (landmark guide; github.com/AegisHerit/LookUp-NYC)'}
 
 def get(url):
-    return urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=60).read()
+    for wait in (0, 5, 15, 40):  # back off when Wikimedia says we're asking too fast
+        time.sleep(wait)
+        try:
+            return urllib.request.urlopen(urllib.request.Request(url, headers=headers), timeout=60).read()
+        except urllib.error.HTTPError as e:
+            if e.code != 429: raise
+    raise RuntimeError('still rate-limited')
 
 def api(base, **params):
     return json.loads(get(base + '?' + urllib.parse.urlencode({**params, 'format': 'json'})))
@@ -44,6 +50,7 @@ credits = json.loads(text[text.index('{'):text.rindex('}') + 1])
 failed = []
 for spec in sys.argv[1:]:
     place_id, source = (s.strip() for s in spec.split('=', 1))
+    time.sleep(2)
     try:
         file_name = find_file(source)
         info = next(iter(api('https://commons.wikimedia.org/w/api.php', action='query', titles='File:' + file_name,
