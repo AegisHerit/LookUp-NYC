@@ -10,7 +10,7 @@ const CREDITS = {
     "url": "https://commons.wikimedia.org/wiki/File%3AEdificio_Fuller_%28Flatiron%29_en_2010_desde_el_Empire_State_crop_boxin.jpg"
   },
   "grandcentral": {
-    "author": "Fcb981 ; Eric Baetscher (attribution required)",
+    "author": "Fcb981 ; Eric Baetscher (attribution required)",
     "license": "CC BY-SA 3.0",
     "url": "https://commons.wikimedia.org/wiki/File%3AImage-Grand_central_Station_Outside_Night_2.jpg"
   },
@@ -75,14 +75,9 @@ const CREDITS = {
     "url": "https://commons.wikimedia.org/wiki/File:PuckMagazine28Aug1893.jpg"
   },
   "historic-oldcathedral-1": {
-    "author": "Alexander Jackson Davis, artist\n\nJames Eddy, engraver",
+    "author": "Alexander Jackson Davis, artist James Eddy, engraver",
     "license": "Public domain",
     "url": "https://commons.wikimedia.org/wiki/File:St._Patrick%27s_(Old)_Cathedral,_Mott_Street,_New_York_City.jpg"
-  },
-  "historic-oldcathedral-2": {
-    "author": "Francis Kearney",
-    "license": "Public domain",
-    "url": "https://commons.wikimedia.org/wiki/File:Old_St._Patrick%27s_Cathedral_on_Mott_Street,_NYC_1831.jpg"
   },
   "historic-oldcathedral-3": {
     "author": "Unknown",
@@ -93,11 +88,6 @@ const CREDITS = {
     "author": "Gleason’s Pictorial Vol. 6 No. 8 (February 25, 1854), Boston:124",
     "license": "Public domain",
     "url": "https://commons.wikimedia.org/wiki/File:Astor_Library,_Lafayette_Place,_New_York_City.jpg"
-  },
-  "historic-publictheater-2": {
-    "author": "Miscellaneous Items in High Demand, PPOC, Library of Congress",
-    "license": "Public domain",
-    "url": "https://commons.wikimedia.org/wiki/File:Interior_view_of_the_Astor_Library,_New_York_LCCN2002711812.jpg"
   },
   "historic-publictheater-3": {
     "author": "Unknown photographer",

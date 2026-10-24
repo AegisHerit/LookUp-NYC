@@ -2,8 +2,8 @@
 // Pages, scripts and styles: try the network first so updates show up, fall back to the saved copy.
 // Photos and icons: use the saved copy first for speed.
 // Audio is left to the browser, since players request it in pieces.
-const CACHE = 'lookup-v18';
-const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'audio-ui.js', 'audio-engine.js', 'routes.js', 'lookup.js', 'story.js', 'data.js', 'credits.js',
+const CACHE = 'lookup-v19';
+const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'audio-ui.js', 'audio-engine.js', 'routes.js', 'lookup.js', 'story.js', 'historic.js', 'data.js', 'credits.js',
   'manifest.webmanifest', 'assets/leaflet.js', 'assets/leaflet.css', 'assets/icon.svg', 'assets/icon-192.png', 'assets/icon-512.png',
   ...['flatiron', 'grandcentral', 'haughwout', 'jefferson', 'nypl', 'plaza', 'puck', 'washington',
     'oldcathedral', 'germania', 'bayard', 'basquiat', 'publictheater'].map(id => `assets/${id}.webp`)];
