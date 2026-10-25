@@ -3,7 +3,7 @@
 // Photos and icons: use the saved copy first for speed.
 // Audio is left to the browser, since players request it in pieces.
 const CACHE = 'lookup-v24';
-const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'audio-ui.js', 'audio-engine.js', 'routes.js', 'lookup.js', 'story.js', 'historic.js', 'data.js', 'credits.js', 'sms.js', 'share.js',
+const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'audio-ui.js', 'audio-engine.js', 'routes.js', 'lookup.js', 'story.js', 'historic.js', 'data.js', 'credits.js', 'sms.js', 'share.js', 'persona.js',
   'manifest.webmanifest', 'assets/leaflet.js', 'assets/leaflet.css', 'assets/icon.svg', 'assets/icon-192.png', 'assets/icon-512.png',
   ...['flatiron', 'grandcentral', 'haughwout', 'jefferson', 'nypl', 'plaza', 'puck', 'washington',
     'oldcathedral', 'germania', 'bayard', 'basquiat', 'publictheater'].flatMap(id => [`assets/${id}.webp`, `assets/${id}-2.webp`])];
