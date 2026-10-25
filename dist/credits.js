@@ -198,5 +198,30 @@ const CREDITS = {
     "author": "Unknown",
     "license": "Public domain",
     "url": "https://commons.wikimedia.org/wiki/File:Historic_American_Buildings_Survey,_Cervin_Robinson,_Photographer_May_30,_1970,_BOTTOM_OF_BUILDING_FROM_SOUTHEAST._-_Bayard-Condict_Building,_65-69_Bleecker_Street,_New_York,_New_HABS_NY,31-NEYO,82-2.tif"
+  },
+  "culture-puck": {
+    "author": "David Shankbone",
+    "license": "CC BY 3.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Debra_Messing_2009.jpg"
+  },
+  "culture-oldcathedral": {
+    "author": "Farragutful",
+    "license": "CC BY-SA 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Basilica_of_Saint_Patrick%27s_Old_Cathedral_-_Interior_01.jpg"
+  },
+  "culture-germania": {
+    "author": "Tim Wilson from Blaine, MN, USA",
+    "license": "CC BY 2.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Jay_Maisel%27s_house_(5911297484).jpg"
+  },
+  "culture-basquiat": {
+    "author": "Galerie Bruno Bischofberger",
+    "license": "CC BY-SA 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Andy_Warhol,_Jean-Michel_Basquiat,_Bruno_Bischofberger_and_Fransesco_Clemente,_New_York,_1984_(cropped)_(2).tif"
+  },
+  "culture-publictheater": {
+    "author": "Steve Jurvetson",
+    "license": "CC BY 2.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Lin-Manuel_Miranda_in_Hamilton.jpg"
   }
 };
