@@ -325,3 +325,5 @@ body{overflow-x:clip}
 .route-tally{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:18px 0 0;font-size:14px;color:var(--ink)}.route-tally .icon{color:var(--accent);width:18px;height:18px}
 /* Larger screens: hold the front photo to the set height, whatever its shape */
 @media(min-width:651px){.hero-image{display:block}.hero-image img[src$="jefferson.webp"]{object-position:50% 25%}}
+/* Mid-size screens: shrink the front headline a little so both versions wrap the same way */
+@media(min-width:951px) and (max-width:1299px){.hero h1{font-size:clamp(44px,4.3vw,60px)}}
