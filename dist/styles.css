@@ -328,8 +328,8 @@ body{overflow-x:clip}
 /* Mid-size screens: shrink the front headline a little so both versions wrap the same way */
 @media(min-width:951px) and (max-width:1299px){.hero h1{font-size:clamp(44px,4.3vw,60px)}}
 /* Logo: the pupils in "oo" glance up, then side to side, then rest. Off when motion is reduced. */
-@keyframes logo-look{0%,40%,100%{transform:translate(-50%,-50%)}45%,57%{transform:translate(-50%,calc(-50% - .055em))}62%,70%{transform:translate(calc(-50% - .055em),-50%)}75%,83%{transform:translate(calc(-50% + .055em),-50%)}88%{transform:translate(-50%,-50%)}}
-@keyframes logo-blink{0%,18.6%,21.4%,92.6%,95.4%,100%{transform:scaleY(1)}20%,94%{transform:scaleY(.12)}}
-.wordmark .eye:after{animation:logo-look 8s ease-in-out 1.5s infinite}
-.wordmark .eye{animation:logo-blink 8s ease-in-out 1.5s infinite}
+@keyframes logo-look{0%,30%,100%{transform:translate(-50%,-50%)}35%,47%{transform:translate(-50%,calc(-50% - .055em))}52%,60%{transform:translate(calc(-50% - .055em),-50%)}65%,73%{transform:translate(calc(-50% + .055em),-50%)}78%{transform:translate(-50%,-50%)}}
+@keyframes logo-blink{0%,13%,19%,84%,90%,100%{transform:scaleY(1)}15.5%,16.5%,86.5%,87.5%{transform:scaleY(.08)}}
+.wordmark .eye:after{animation:logo-look 5s ease-in-out .8s infinite}
+.wordmark .eye{animation:logo-blink 5s ease-in-out .8s infinite}
 @media(prefers-reduced-motion:reduce){.wordmark .eye,.wordmark .eye:after{animation:none}}
