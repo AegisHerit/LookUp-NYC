@@ -333,3 +333,17 @@ body{overflow-x:clip}
 .wordmark .eye:after{animation:logo-look 5s ease-in-out .8s infinite}
 .wordmark .eye{animation:logo-blink 5s ease-in-out .8s infinite}
 @media(prefers-reduced-motion:reduce){.wordmark .eye,.wordmark .eye:after{animation:none}}
+/* Building pages: the audio guide as one compact line; sections open on demand */
+.audio-compact{padding:10px 12px 10px 10px;border-radius:16px;margin:0 0 30px}
+.audio-line{display:flex;align-items:center;gap:12px}
+.audio-compact .audio-primary{min-height:42px;padding:9px 16px;font-size:12px;flex-shrink:0}
+.audio-meta{display:flex;align-items:center;gap:7px;font-size:12px;color:#d6e1ff;min-width:0;flex:1;white-space:nowrap}
+.audio-meta>.icon{width:17px;height:17px;color:#8af5e3}
+.audio-meta .audio-estimate{font-size:inherit;color:inherit}
+.audio-more-toggle{display:inline-flex;align-items:center;gap:5px;border:0;background:#ffffff17;color:#eff3ff;border-radius:20px;padding:8px 12px;font-size:11px;font-weight:600;flex-shrink:0}
+.audio-more-toggle .icon{width:13px;height:13px;transform:rotate(90deg);transition:transform .2s}
+.audio-more-toggle[aria-expanded="true"] .icon{transform:rotate(-90deg)}
+.audio-more{padding:12px 6px 6px}
+.audio-compact .audio-error{margin:10px 0 2px}
+@media(max-width:650px){.audio-compact{padding:9px 10px 9px 9px;margin-bottom:26px}.audio-line{gap:9px}.audio-compact .audio-primary{padding:9px 13px}.audio-meta{font-size:11px}.audio-meta>.icon{display:none}}
+@media(max-width:340px){.audio-compact .audio-primary span{display:none}.audio-compact .audio-primary{padding:9px 12px}}
