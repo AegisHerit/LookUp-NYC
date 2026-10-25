@@ -27,6 +27,7 @@ const LookUp=(()=>{
 
   // Browsers only allow sound after a tap, so open the audio paths during the start tap.
   function unlockAudio(){
+    try{typeof primeRecordedAudio==='function'&&primeRecordedAudio()}catch{}
     try{const AC=window.AudioContext||window.webkitAudioContext;if(AC){audioCtx=audioCtx||new AC();audioCtx.resume()}}catch{}
     try{if(window.speechSynthesis){const u=new SpeechSynthesisUtterance(' ');u.volume=0;speechSynthesis.speak(u)}}catch{}
   }
@@ -90,10 +91,12 @@ const LookUp=(()=>{
     // so there it shows once every stop has been reached this time.
     if((finished||(demo()&&w&&stopsOf(w).every(s=>shown.has(s))))&&typeof Story!=='undefined')Story.open(w.id);
   }
-  // Read the cue, then play the place's story (recording or device voice).
+  // Play the place's story. A place with a recorded narration plays just the recording (the cue is on screen);
+  // others hear the cue read by the device voice first, then the device narration.
   function speak(p){
     try{player.stop()}catch{}
     const story=()=>{if(on&&document.getElementById('lookup-view'))launchAudio(p.id)};
+    if(p.audio){try{window.speechSynthesis&&speechSynthesis.cancel()}catch{}story();return}
     if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){story();return}
     try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance('Look up. '+p.lookUp);u.lang='en-US';u.onend=story;u.onerror=story;speechSynthesis.speak(u)}catch{story()}
   }
@@ -131,7 +134,7 @@ const LookUp=(()=>{
     else if(a==='close'){closeView()}
     else if(a==='story'){closeView()}
     else if(a==='demo-skip'){try{speechSynthesis.cancel()}catch{}try{player.stop()}catch{}clearTimeout(dwellTimer);dwell=null;closeView();const n=nextStop();if(n){locationPoint={lat:n.lat,lng:n.lng};arrive(n)}else bar()}
-    else if(a==='demo-arrive'){const n=nextStop();if(n){locationPoint={lat:n.lat,lng:n.lng};onFix()}}
+    else if(a==='demo-arrive'){unlockAudio();const n=nextStop();if(n){locationPoint={lat:n.lat,lng:n.lng};onFix()}}
     else if(a==='replay'){const p=byId(b.dataset.id);if(p)speak(p)}
     else if(a==='spot'){const p=byId(b.dataset.id);if(!p)return;const now=toggleSpotted(p.id);b.outerHTML=spotButton(p);toast(now?'Nice eye. Added to your I Spy collection.':'Removed from your I Spy collection.')}});
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('lookup-view'))closeView()});
