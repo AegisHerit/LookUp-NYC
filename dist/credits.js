@@ -100,17 +100,17 @@ const CREDITS = {
     "url": "https://commons.wikimedia.org/wiki/File:(King1893NYC)_pg332_ASTOR_LIBRARY,_LAFAYETTE_PLACE.jpg"
   },
   "historic-bayard-1": {
-    "author": "Unknown",
+    "author": "Cervin Robinson, Historic American Buildings Survey",
     "license": "Public domain",
     "url": "https://commons.wikimedia.org/wiki/File:Historic_American_Buildings_Survey,_Cervin_Robinson,_Photographer_May_30,_1970,_TOP_OF_BUILDING_FROM_SOUTH._-_Bayard-Condict_Building,_65-69_Bleecker_Street,_New_York,_New_York_HABS_NY,31-NEYO,82-1.tif"
   },
   "historic-bayard-2": {
-    "author": "Unknown",
+    "author": "Cervin Robinson, Historic American Buildings Survey",
     "license": "Public domain",
     "url": "https://commons.wikimedia.org/wiki/File:Historic_American_Buildings_Survey,_Cervin_Robinson,_Photographer_May_30,_1970,_ENTRANCE._-_Bayard-Condict_Building,_65-69_Bleecker_Street,_New_York,_New_York_County,_NY_HABS_NY,31-NEYO,82-3.tif"
   },
   "historic-bayard-3": {
-    "author": "Unknown",
+    "author": "Cervin Robinson, Historic American Buildings Survey",
     "license": "Public domain",
     "url": "https://commons.wikimedia.org/wiki/File:Historic_American_Buildings_Survey,_Cervin_Robinson,_Photographer_May_30,_1970,_CORNICE_DETAIL._-_Bayard-Condict_Building,_65-69_Bleecker_Street,_New_York,_New_York_County,_NY_HABS_NY,31-NEYO,82-5.tif"
   },
@@ -195,7 +195,7 @@ const CREDITS = {
     "url": "https://commons.wikimedia.org/wiki/File:Astor_Library_Building,_New_York_City,_1852.tiff"
   },
   "historic-bayard-4": {
-    "author": "Unknown",
+    "author": "Cervin Robinson, Historic American Buildings Survey",
     "license": "Public domain",
     "url": "https://commons.wikimedia.org/wiki/File:Historic_American_Buildings_Survey,_Cervin_Robinson,_Photographer_May_30,_1970,_BOTTOM_OF_BUILDING_FROM_SOUTHEAST._-_Bayard-Condict_Building,_65-69_Bleecker_Street,_New_York,_New_HABS_NY,31-NEYO,82-2.tif"
   },
