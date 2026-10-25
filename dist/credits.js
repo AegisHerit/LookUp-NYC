@@ -223,5 +223,35 @@ const CREDITS = {
     "author": "Steve Jurvetson",
     "license": "CC BY 2.0",
     "url": "https://commons.wikimedia.org/wiki/File:Lin-Manuel_Miranda_in_Hamilton.jpg"
+  },
+  "cand-a": {
+    "author": "Beyond My Ken",
+    "license": "CC BY-SA 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Front_door_Puck.jpg"
+  },
+  "cand-b": {
+    "author": "olekinderhook",
+    "license": "CC BY 3.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Statue_of_Puck_on_the_LES._-_panoramio.jpg"
+  },
+  "cand-c": {
+    "author": "Kidfly182",
+    "license": "CC BY 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Puck_Building_August_2024.jpg"
+  },
+  "cand-d": {
+    "author": "Kidfly182",
+    "license": "CC BY 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Puck_Building_January_2025.jpg"
+  },
+  "cand-e": {
+    "author": "Kidfly182",
+    "license": "CC BY 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Puck_Building_September_2024_005.jpg"
+  },
+  "cand-f": {
+    "author": "Kidfly182",
+    "license": "CC BY 4.0",
+    "url": "https://commons.wikimedia.org/wiki/File:Puck_Building_August_2024_003.jpg"
   }
 };
