@@ -13,7 +13,8 @@ const LookUp=(()=>{
   // or the switch in the About panel. Location isn't used; an "Arrive" button stands in for walking.
   const DEMO_KEY='lookup-demo';
   {const q=new URLSearchParams(location.search).get('demo');if(q==='1')putStore(DEMO_KEY,true);if(q==='0')putStore(DEMO_KEY,false)}
-  const demo=()=>readStore(DEMO_KEY,false)===true;
+  // On by default so anyone can try it from anywhere; real walkers can switch it off in About.
+  const demo=()=>readStore(DEMO_KEY,true)!==false;
   const walk=()=>WALKS.find(w=>w.id===walkId);
   // On a route where some stops have a recorded narration, Look Up mode visits only those stops.
   const stopsOf=w=>{if(!w)return [];const rec=w.stops.filter(id=>byId(id)&&byId(id).audio);return rec.length?rec:w.stops};
