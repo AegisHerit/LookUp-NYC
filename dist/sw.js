@@ -2,14 +2,14 @@
 // Pages, scripts and styles: try the network first so updates show up, fall back to the saved copy.
 // Photos and icons: use the saved copy first for speed.
 // Audio is left to the browser, since players request it in pieces.
-const CACHE = 'lookup-v31';
+const CACHE = 'lookup-v32';
 const SHELL = ['./', 'index.html', 'styles.css', 'app.js', 'audio-ui.js', 'audio-engine.js', 'routes.js', 'lookup.js', 'story.js', 'historic.js', 'data.js', 'credits.js', 'sms.js', 'share.js', 'persona.js',
   'manifest.webmanifest', 'assets/leaflet.js', 'assets/leaflet.css', 'assets/icon.svg', 'assets/icon-192.png', 'assets/icon-512.png',
   ...['flatiron', 'grandcentral', 'haughwout', 'jefferson', 'nypl', 'plaza', 'puck', 'washington',
     'oldcathedral', 'germania', 'bayard', 'basquiat', 'publictheater'].flatMap(id => [`assets/${id}.webp`, `assets/${id}-2.webp`])];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL.map(u => new Request(u, { cache: 'reload' })))).then(() => self.skipWaiting()));
 });
 self.addEventListener('activate', e => {
   e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
@@ -34,7 +34,8 @@ async function fromCache(req) {
 }
 async function fromNetwork(req) {
   try {
-    const res = await fetch(req);
+    // Ask the server each time (a quick check if nothing changed), so a new deploy shows on the next load.
+    const res = await fetch(req, { cache: 'no-cache' });
     if (res.ok) (await caches.open(CACHE)).put(req, res.clone());
     return res;
   } catch (err) {

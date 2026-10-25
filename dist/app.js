@@ -173,4 +173,5 @@ const dialog=document.getElementById('about-dialog');function showAbout(){docume
 document.querySelector('.skip-link').addEventListener('click',e=>{e.preventDefault();main.focus({preventScroll:false})});
 window.addEventListener('hashchange',()=>{render();main.focus({preventScroll:true})});
 
-if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+// When a new version takes over, reload once so it shows without a second refresh.
+if('serviceWorker' in navigator){const hadOld=!!navigator.serviceWorker.controller;let reloaded=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(hadOld&&!reloaded){reloaded=true;location.reload()}});window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).catch(()=>{}))}
