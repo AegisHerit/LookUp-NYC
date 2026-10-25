@@ -1,0 +1,7 @@
+[0;93m2026-10-25 19:40:30.066749225 [W:onnxruntime:Default, device_discovery.cc:95 GetPciBusId] Skipping pci_bus_id for PCI path at "/sys/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/5620e0c7-8062-4dce-aeb7-520c7ef76171" because filename "5620e0c7-8062-4dce-aeb7-520c7ef76171" did not match expected pattern of [0-9a-f]+:[0-9a-f]+:[0-9a-f]+[.][0-9a-f]+[m
+af_heart 1 4.18
+af_heart 2 6.17
+af_heart 3 5.65
+af_heart 4 5.74
+af_heart 5 1.32
+exit 0
