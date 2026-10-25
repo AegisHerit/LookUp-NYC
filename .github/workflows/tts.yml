@@ -29,9 +29,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.11'
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg espeak-ng
-      - run: pip install "kokoro>=0.9.4" soundfile
+      - run: pip install "kokoro==0.9.4" soundfile "spacy==3.8.7" https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl
       - name: Narrate
         run: python .github/scripts/tts.py "${{ inputs.script }}" "${{ inputs.voices }}" "${{ inputs.sections }}" "${{ inputs.speed }}"
       - name: Commit audio
